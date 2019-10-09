@@ -35,6 +35,7 @@
             this.txtMinSup = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnTimD = new System.Windows.Forms.Button();
+            this.btnTimItemSets = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,11 +101,22 @@
             this.btnTimD.UseVisualStyleBackColor = true;
             this.btnTimD.Click += new System.EventHandler(this.btnTimD_Click);
             // 
+            // btnTimItemSets
+            // 
+            this.btnTimItemSets.Location = new System.Drawing.Point(270, 415);
+            this.btnTimItemSets.Name = "btnTimItemSets";
+            this.btnTimItemSets.Size = new System.Drawing.Size(165, 23);
+            this.btnTimItemSets.TabIndex = 7;
+            this.btnTimItemSets.Text = "TÌM ITEMSETS";
+            this.btnTimItemSets.UseVisualStyleBackColor = true;
+            this.btnTimItemSets.Click += new System.EventHandler(this.btnTimItemSets_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnTimItemSets);
             this.Controls.Add(this.btnTimD);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtMinSup);
@@ -113,7 +125,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgv1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Form1 - [ĐỀ TÀI 3] QUẢN LÍ ĐIỂM SINH VIÊN";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).EndInit();
             this.ResumeLayout(false);
@@ -130,5 +142,6 @@
         private System.Windows.Forms.TextBox txtMinSup;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnTimD;
+        private System.Windows.Forms.Button btnTimItemSets;
     }
 }

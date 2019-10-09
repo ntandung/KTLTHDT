@@ -36,5 +36,11 @@ namespace KTLTHDT
             dgv1.DataSource = dataTable;
             Program.conn.Close();
         }
+
+        private void btnTimItemSets_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2();
+            form2.ShowDialog();
+        }
     }
 }

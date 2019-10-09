@@ -10,6 +10,7 @@ namespace KTLTHDT
 
         public static SqlConnection conn = new SqlConnection();
         public static String connstr;
+        public static Boolean hasNext= true;
 
         // Nhap server name
         public static String servername = "DESKTOP-NG7E5Q6";
