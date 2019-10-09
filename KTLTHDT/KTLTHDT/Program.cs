@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 
+
 namespace KTLTHDT
 {
     class Program
@@ -11,13 +12,13 @@ namespace KTLTHDT
         public static String connstr;
 
         // Nhap server name
-        public static String servername = "THU-PC\\SERVER1";
+        public static String servername = "DESKTOP-NG7E5Q6";
         public static String username = "";
 
         // username
         public static String mlogin = "sa";
         // password
-        public static String password = "kc";
+        public static String password = "123";
         // database name
         public static String database = "QLDSV";
         public static int KetNoi()
@@ -87,6 +88,8 @@ namespace KTLTHDT
         }
         static void Main(string[] args)
         {
+            Form1 form1 = new Form1();
+            form1.ShowDialog();
         }
     }
 }
