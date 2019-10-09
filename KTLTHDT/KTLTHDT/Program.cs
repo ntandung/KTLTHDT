@@ -63,6 +63,7 @@ namespace KTLTHDT
         {
             DataTable dt = new DataTable();
             if (Program.conn.State == ConnectionState.Closed) Program.conn.Open();
+            // TODO: Exception in SP_GIAOTAC
             SqlDataAdapter da = new SqlDataAdapter(cmd, conn);
             da.Fill(dt);
             conn.Close();

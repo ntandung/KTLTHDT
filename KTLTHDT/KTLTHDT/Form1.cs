@@ -14,6 +14,8 @@ namespace KTLTHDT
     public partial class Form1 : Form
     {
         private DataGridView tapGiaoTacGridView = new DataGridView();
+        DataTable dataTable;
+
         public Form1()
         {
             InitializeComponent();
@@ -22,10 +24,16 @@ namespace KTLTHDT
         private void Form1_Load(object sender, EventArgs e)
         {
             Program.KetNoi();
-            DataTable dataAdapter;
-            dataAdapter = Program.ExecSqlDataTable("EXEC SP_GIAOTAC 50");
-            dgv1.DataSource = dataAdapter;
-            
+            dataTable = Program.ExecSqlDataTable("EXEC SP_GIAOTAC "+ txtMinSup.Text);
+            dgv1.DataSource = dataTable;
+            Program.conn.Close();
+        }
+
+        private void btnTimD_Click(object sender, EventArgs e)
+        {
+            Program.KetNoi();
+            dataTable = Program.ExecSqlDataTable("EXEC SP_GIAOTAC " + txtMinSup.Text);
+            dgv1.DataSource = dataTable;
             Program.conn.Close();
         }
     }

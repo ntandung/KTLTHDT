@@ -31,6 +31,10 @@
             this.dgv1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtMinSup = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnTimD = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,11 +64,51 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "BẢNG GIAO TÁC (TẬP D)";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(64, 374);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(43, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "MinSup";
+            // 
+            // txtMinSup
+            // 
+            this.txtMinSup.Location = new System.Drawing.Point(122, 371);
+            this.txtMinSup.Name = "txtMinSup";
+            this.txtMinSup.Size = new System.Drawing.Size(58, 20);
+            this.txtMinSup.TabIndex = 4;
+            this.txtMinSup.Text = "50";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(196, 374);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(15, 13);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "%";
+            // 
+            // btnTimD
+            // 
+            this.btnTimD.Location = new System.Drawing.Point(67, 415);
+            this.btnTimD.Name = "btnTimD";
+            this.btnTimD.Size = new System.Drawing.Size(165, 23);
+            this.btnTimD.TabIndex = 6;
+            this.btnTimD.Text = "TÌM TẬP D THỎA MINSUP";
+            this.btnTimD.UseVisualStyleBackColor = true;
+            this.btnTimD.Click += new System.EventHandler(this.btnTimD_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnTimD);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtMinSup);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgv1);
@@ -82,5 +126,9 @@
         private System.Windows.Forms.DataGridView dgv1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtMinSup;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnTimD;
     }
 }
