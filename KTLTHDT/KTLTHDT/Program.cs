@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Collections.Generic;
 
 
 namespace KTLTHDT
@@ -11,6 +12,7 @@ namespace KTLTHDT
         public static SqlConnection conn = new SqlConnection();
         public static String connstr;
         public static Boolean hasNext= true;
+        public static List<Dictionary<string, List<int>>> tapF = new List<Dictionary<string, List<int>>>();
 
         // Nhap server name
         public static String servername = "DESKTOP-NG7E5Q6";

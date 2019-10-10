@@ -16,5 +16,23 @@ namespace KTLTHDT
         {
             InitializeComponent();
         }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("TID");
+            dt.Columns.Add("Tập các mục");
+            foreach (var oItem in Program.tapF[0])
+            {
+                string value = "";
+                foreach(int val in oItem.Value)
+                {
+                    value = val + ",";
+                }
+                dt.Rows.Add(new object[] { oItem.Key, value });
+            }
+
+            dgvF.DataSource = dt;
+        }
     }
 }

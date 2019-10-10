@@ -27,6 +27,23 @@ namespace KTLTHDT
             dataTable = Program.ExecSqlDataTable("EXEC SP_GIAOTAC "+ txtMinSup.Text);
             dgv1.DataSource = dataTable;
             Program.conn.Close();
+            Dictionary<string, List<int>> t = new Dictionary<string, List<int>>();
+
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                List<int> tmp = new List<int>();
+
+                for (int j = 1; j < dataTable.Columns.Count; j++)
+                {
+
+                    if (dataTable.Rows[i][j].ToString().Equals("1"))
+                    {
+                        tmp.Add(j);
+                    }
+                }
+                t[dataTable.Rows[i][0].ToString()] = tmp;
+            }
+            Program.tapF.Add(t);
         }
 
         private void btnTimD_Click(object sender, EventArgs e)
@@ -35,6 +52,24 @@ namespace KTLTHDT
             dataTable = Program.ExecSqlDataTable("EXEC SP_GIAOTAC " + txtMinSup.Text);
             dgv1.DataSource = dataTable;
             Program.conn.Close();
+            Dictionary<string, List<int>> t = new Dictionary<string, List<int>>();
+
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                List<int> tmp = new List<int>();
+
+                for (int j = 1; j < dataTable.Columns.Count; j++)
+                {
+
+                    if (dataTable.Rows[i][j].ToString().Equals("1"))
+                    {
+                        tmp.Add(j);
+                    }
+                }
+                Console.WriteLine(tmp);
+                t[dataTable.Rows[i][0].ToString()] = tmp;
+            }
+            Program.tapF[0] = t;
         }
 
         private void btnTimItemSets_Click(object sender, EventArgs e)
