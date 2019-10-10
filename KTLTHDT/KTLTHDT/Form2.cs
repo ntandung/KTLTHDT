@@ -24,12 +24,7 @@ namespace KTLTHDT
             dt.Columns.Add("Tập các mục");
             foreach (var oItem in Program.tapF[0])
             {
-                string value = "";
-                foreach(int val in oItem.Value)
-                {
-                    value = val + ",";
-                }
-                dt.Rows.Add(new object[] { oItem.Key, value });
+                dt.Rows.Add(new object[] { oItem.Key, string.Join(",", oItem.Value.ToArray() )});
             }
 
             dgvF.DataSource = dt;
