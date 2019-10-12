@@ -29,6 +29,9 @@ namespace KTLTHDT
             Program.conn.Close();
             Dictionary<string, List<int>> t = new Dictionary<string, List<int>>();
 
+            for (int j = 1; j < dataTable.Columns.Count; j++)
+                Program.mahoaDL.Add(dataTable.Columns[j].ColumnName.ToString());
+
             for (int i = 0; i < dataTable.Rows.Count; i++)
             {
                 List<int> tmp = new List<int>();
@@ -54,13 +57,16 @@ namespace KTLTHDT
             Program.conn.Close();
             Dictionary<string, List<int>> t = new Dictionary<string, List<int>>();
 
+            Program.mahoaDL.Clear();
+            for (int j = 1; j < dataTable.Columns.Count; j++)
+                Program.mahoaDL.Add(dataTable.Columns[j].ColumnName.ToString());
+
             for (int i = 0; i < dataTable.Rows.Count; i++)
             {
                 List<int> tmp = new List<int>();
 
                 for (int j = 1; j < dataTable.Columns.Count; j++)
                 {
-
                     if (dataTable.Rows[i][j].ToString().Equals("1"))
                     {
                         tmp.Add(j);

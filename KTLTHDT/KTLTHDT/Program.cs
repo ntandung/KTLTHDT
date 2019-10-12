@@ -12,6 +12,8 @@ namespace KTLTHDT
         public static SqlConnection conn = new SqlConnection();
         public static String connstr;
         public static Boolean hasNext= true;
+        public static Boolean hasPrevious = false;
+        public static List<string> mahoaDL = new List<string>();
         public static List<Dictionary<string, List<int>>> tapF = new List<Dictionary<string, List<int>>>();
 
         // Nhap server name
@@ -24,6 +26,16 @@ namespace KTLTHDT
         public static String password = "123";
         // database name
         public static String database = "QLDSV";
+
+        public static string getTapMuc(List<int> idmuc)
+        {
+            List<string> tapDuLieu = new List<string>();
+            foreach(int index in idmuc)
+            {
+                tapDuLieu.Add(Program.mahoaDL[index - 1]);
+            }
+            return string.Join(",", tapDuLieu.ToArray());
+        }
         public static int KetNoi()
         {
             if (Program.conn != null && Program.conn.State == ConnectionState.Open)
