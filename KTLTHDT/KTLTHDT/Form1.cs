@@ -27,21 +27,23 @@ namespace KTLTHDT
             dataTable = Program.ExecSqlDataTable("EXEC SP_GIAOTAC "+ txtMinSup.Text);
             dgv1.DataSource = dataTable;
             Program.conn.Close();
-            Dictionary<string, List<int>> t = new Dictionary<string, List<int>>();
+            Dictionary<string, List<List<int>>> t = new Dictionary<string, List<List<int>>>();
 
             for (int j = 1; j < dataTable.Columns.Count; j++)
                 Program.mahoaDL.Add(dataTable.Columns[j].ColumnName.ToString());
 
             for (int i = 0; i < dataTable.Rows.Count; i++)
             {
-                List<int> tmp = new List<int>();
+                List<List<int>> tmp = new List<List<int>>();
 
                 for (int j = 1; j < dataTable.Columns.Count; j++)
                 {
 
                     if (dataTable.Rows[i][j].ToString().Equals("1"))
                     {
-                        tmp.Add(j);
+                        List<int> tmp1 = new List<int>();
+                        tmp1.Add(j);
+                        tmp.Add(tmp1);
                     }
                 }
                 t[dataTable.Rows[i][0].ToString()] = tmp;
@@ -55,7 +57,7 @@ namespace KTLTHDT
             dataTable = Program.ExecSqlDataTable("EXEC SP_GIAOTAC " + txtMinSup.Text);
             dgv1.DataSource = dataTable;
             Program.conn.Close();
-            Dictionary<string, List<int>> t = new Dictionary<string, List<int>>();
+            Dictionary<string, List<List<int>>> t = new Dictionary<string, List<List<int>>>();
 
             Program.mahoaDL.Clear();
             for (int j = 1; j < dataTable.Columns.Count; j++)
@@ -63,16 +65,18 @@ namespace KTLTHDT
 
             for (int i = 0; i < dataTable.Rows.Count; i++)
             {
-                List<int> tmp = new List<int>();
+                List<List<int>> tmp = new List<List<int>>();
 
                 for (int j = 1; j < dataTable.Columns.Count; j++)
                 {
+
                     if (dataTable.Rows[i][j].ToString().Equals("1"))
                     {
-                        tmp.Add(j);
+                        List<int> tmp1 = new List<int>();
+                        tmp1.Add(j);
+                        tmp.Add(tmp1);
                     }
                 }
-                Console.WriteLine(tmp);
                 t[dataTable.Rows[i][0].ToString()] = tmp;
             }
             Program.tapF[0] = t;

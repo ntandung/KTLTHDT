@@ -14,7 +14,7 @@ namespace KTLTHDT
         public static Boolean hasNext= true;
         public static Boolean hasPrevious = false;
         public static List<string> mahoaDL = new List<string>();
-        public static List<Dictionary<string, List<int>>> tapF = new List<Dictionary<string, List<int>>>();
+        public static List<Dictionary<string, List<List<int>>>> tapF = new List<Dictionary<string, List<List<int>>>>();
 
         // Nhap server name
         public static String servername = "DESKTOP-NG7E5Q6";
@@ -27,13 +27,20 @@ namespace KTLTHDT
         // database name
         public static String database = "QLDSV";
 
-        public static string getTapMuc(List<int> idmuc)
+        public static string getTapMuc(List<List<int>> idmuc)
         {
             List<string> tapDuLieu = new List<string>();
-            foreach(int index in idmuc)
+            foreach(List<int> i in idmuc)
             {
-                tapDuLieu.Add(Program.mahoaDL[index - 1]);
+                List<string> tapDuLieu1 = new List<string>();
+
+                foreach (int index in i)
+                {
+                    tapDuLieu1.Add(Program.mahoaDL[index - 1]);
+                }
+                tapDuLieu.Add("{"+ string.Join(",", tapDuLieu1.ToArray()) + "}");
             }
+            
             return string.Join(",", tapDuLieu.ToArray());
         }
         public static int KetNoi()
