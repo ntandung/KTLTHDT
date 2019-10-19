@@ -137,22 +137,24 @@ namespace KTLTHDT
             List<List<int>> tmp = new List<List<int>>();
             if (lPrevious.Count <= 1)
                 return tmp;
+            
             int k = lPrevious[0].Count;
+            
             for(int i = 0; i < lPrevious.Count - 1; i++)
             {
-                List<int> tmp_i = new List<Int32>(lPrevious[i]);
-                tmp_i.RemoveAt(k - 1);
-                int sumi = tmp_i.Count > 0 ? Convert.ToInt32(string.Join("", tmp_i)) : 0;
+                List<int> tmp1 = new List<int>(lPrevious[i]);
+                tmp1.RemoveAt(k - 1);
+                
                 for (int j = i+1; j < lPrevious.Count; j++)
                 {
-                    List<int> tmp_j = new List<Int32>(lPrevious[j]);
-                    tmp_j.RemoveAt(k - 1);
-                    int sumj = tmp_j.Count > 0 ?  Convert.ToInt32(string.Join("", tmp_j)) : 0;
-                    if (sumi == sumj)
+                    List<int> tmp2 = new List<int>(lPrevious[j]);
+                    tmp2.RemoveAt(k - 1);
+                    
+                    if (CompareTwoLists(tmp1, tmp2))
                     {
-                        tmp_j.Add(lPrevious[i][k-1]);
-                        tmp_j.Add(lPrevious[j][k-1]);
-                        tmp.Add(tmp_j);
+                        tmp2.Add(lPrevious[i][k-1]);
+                        tmp2.Add(lPrevious[j][k-1]);
+                        tmp.Add(tmp2);
                     }
 
                 }
@@ -185,36 +187,22 @@ namespace KTLTHDT
         /// <returns></returns>
         public static bool ThuocTid(List<List<int>> tid, List<int> muc)
         {
-            List<string> tmp = new List<string>();
+            List<int> p = new List<int>(muc);
+            p.RemoveAt(muc.Count - 1);
 
-            foreach(List<int> item in tid)
-            {
-                tmp.Add(string.Join(",", item));
-            }
-            List<int> tmp_t1 = new List<int>(muc);
-            tmp_t1.RemoveAt(muc.Count - 1);
-            
-            List<int> tmp_t2 = new List<int>(muc);
-            tmp_t2.RemoveAt(muc.Count - 2);
+            // p: c-c[k] 
+            List<int> q = new List<int>(muc);
+            q.RemoveAt(muc.Count - 2);
 
-            string t1 = string.Join("", tmp_t1);
-            string t2 = string.Join("", tmp_t2);
+            //q: c-c[k-1] 
             int count = 0;
             foreach(List<int> item in tid)
             {
-                if (CompareTwoLists(item, tmp_t1))
+                if (CompareTwoLists(item, p))
                     count += 1;
-                if (CompareTwoLists(item, tmp_t2))
+                if (CompareTwoLists(item, q))
                     count += 1;
-
             }
-            //foreach(string item in tmp)
-            //{
-            //    if (item.Equals(t1))
-            //        count += 1;
-            //    if (item.Equals(t2))
-            //        count += 1;
-            //}
             return count>=2;
         }
 

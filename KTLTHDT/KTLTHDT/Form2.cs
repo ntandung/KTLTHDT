@@ -30,7 +30,7 @@ namespace KTLTHDT
 
             DataTable dtc = new DataTable();
             dtc.Columns.Add("Tập " + (Program.tapNMuc + 1) + " mục");
-            dtc.Columns.Add("Support");
+            dtc.Columns.Add("Support (%)");
             foreach (var oItem in Program.TinhL(Program.tapF[0]))
             {
                 
@@ -124,6 +124,7 @@ namespace KTLTHDT
             {
                 btnNext.Text = "NEXT";
             }
+
             if (Program.tapNMuc == 0)
             {
                 btnBack.Enabled = false;
