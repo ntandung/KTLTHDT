@@ -13,7 +13,7 @@ namespace KTLTHDT
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            Program.tapNMuc = 0;
+            Program.k = 0;
             Program.tapF.RemoveRange(1, Program.tapF.Count - 1);
             Program.tapL.Clear();
             btnBack.Enabled = false;
@@ -29,7 +29,7 @@ namespace KTLTHDT
             dgvF.DataSource = dt;
 
             DataTable dtc = new DataTable();
-            dtc.Columns.Add("Tập " + (Program.tapNMuc + 1) + " mục");
+            dtc.Columns.Add("Tập " + (Program.k + 1) + " mục");
             dtc.Columns.Add("Support (%)");
             foreach (var oItem in Program.TinhL(Program.tapF[0]))
             {
@@ -59,23 +59,23 @@ namespace KTLTHDT
                 DataTable dt = new DataTable();
                 dt.Columns.Add("TID");
                 dt.Columns.Add("Tập các mục");
-                foreach (var oItem in Program.SinhF(Program.tapF[Program.tapNMuc], Program.TinhL(Program.tapF[Program.tapNMuc])))
+                foreach (var item in Program.SinhF(Program.tapF[Program.k], Program.TinhL(Program.tapF[Program.k])))
                 {
-                    dt.Rows.Add(new object[] { oItem.Key, Program.GetTapMuc(oItem.Value) });
+                    dt.Rows.Add(new object[] { item.Key, Program.GetTapMuc(item.Value) });
                 }
 
                 dgvF.DataSource = dt;
 
 
                 DataTable dtc = new DataTable();
-                dtc.Columns.Add("Tập " + (Program.tapNMuc + 1) + " mục");
+                dtc.Columns.Add("Tập " + (Program.k + 1) + " mục");
                 dtc.Columns.Add("Support (%)");
-                var tapL = Program.TinhL(Program.tapF[Program.tapNMuc]);
-                foreach (var oItem in tapL)
+                var tapL = Program.TinhL(Program.tapF[Program.k]);
+                foreach (var item in tapL)
                 {
 
-                    dtc.Rows.Add(new object[] { Program.GetChiMuc(Program.StringToInt(oItem.Key)), oItem.Value });
-                    Program.tapL[oItem.Key] = oItem.Value;
+                    dtc.Rows.Add(new object[] { Program.GetChiMuc(Program.StringToInt(item.Key)), item.Value });
+                    Program.tapL[item.Key] = item.Value;
                 }
 
                 dgvC.DataSource = dtc;
@@ -90,28 +90,28 @@ namespace KTLTHDT
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            Program.tapF.RemoveRange(Program.tapNMuc, Program.tapF.Count - Program.tapNMuc);
-            Program.tapNMuc -= 1;
+            Program.tapF.RemoveRange(Program.k, Program.tapF.Count - Program.k);
+            Program.k -= 1;
             DataTable dt = new DataTable();
             dt.Columns.Add("TID");
             dt.Columns.Add("Tập các mục");
-            foreach (var oItem in Program.tapF[Program.tapNMuc])
+            foreach (var item in Program.tapF[Program.k])
             {
-                dt.Rows.Add(new object[] { oItem.Key, Program.GetTapMuc(oItem.Value) });
+                dt.Rows.Add(new object[] { item.Key, Program.GetTapMuc(item.Value) });
             }
 
             dgvF.DataSource = dt;
 
 
             DataTable dtc = new DataTable();
-            dtc.Columns.Add("Tập " + (Program.tapNMuc + 1) + " mục");
+            dtc.Columns.Add("Tập " + (Program.k + 1) + " mục");
             dtc.Columns.Add("Support (%)");
-            var tapL = Program.TinhL(Program.tapF[Program.tapNMuc]);
-            foreach (var oItem in tapL)
+            var tapL = Program.TinhL(Program.tapF[Program.k]);
+            foreach (var item in tapL)
             {
 
-                dtc.Rows.Add(new object[] { Program.GetChiMuc(Program.StringToInt(oItem.Key)), oItem.Value });
-                Program.tapL[oItem.Key] = oItem.Value;
+                dtc.Rows.Add(new object[] { Program.GetChiMuc(Program.StringToInt(item.Key)), item.Value });
+                Program.tapL[item.Key] = item.Value;
             }
 
             dgvC.DataSource = dtc;
@@ -125,7 +125,7 @@ namespace KTLTHDT
                 btnNext.Text = "NEXT";
             }
 
-            if (Program.tapNMuc == 0)
+            if (Program.k == 0)
             {
                 btnBack.Enabled = false;
             }

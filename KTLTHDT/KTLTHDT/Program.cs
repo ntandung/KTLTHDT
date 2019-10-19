@@ -11,7 +11,7 @@ namespace KTLTHDT
 
         public static SqlConnection conn = new SqlConnection();
         public static String connstr;
-        public static int tapNMuc = 0;
+        public static int k = 0;
         public static int tongSoGiaoTac = 0;
         public static int sup = 0;
         // Luu danh sach item theo chi so
@@ -215,7 +215,7 @@ namespace KTLTHDT
         /// <returns></returns>
         public static Dictionary<string, List<List<int>>> SinhF(Dictionary<string, List<List<int>>> fPrevious, Dictionary<string, float> lPrevious)
         {
-            Program.tapNMuc += 1;
+            Program.k += 1;
             List<List<int>> tmpLPrevious = new List<List<int>>();
             foreach(string item in lPrevious.Keys)
             {
