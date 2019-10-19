@@ -47,7 +47,7 @@ namespace KTLTHDT
             dgvC.DataSource = dtc;
             if(Program.tinhC(Program.tapF[0]).Count == 0)
             {
-                btnNext.Text = "Finish";
+                btnNext.Text = "FINISH";
             }
 
         }
