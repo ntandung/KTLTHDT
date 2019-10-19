@@ -25,6 +25,8 @@ namespace KTLTHDT
         {
             Program.KetNoi();
             dataTable = Program.ExecSqlDataTable("EXEC SP_GIAOTAC "+ txtMinSup.Text);
+            Program.tongSoGiaoTac = dataTable.Rows.Count;
+            Program.sup = (int)Math.Ceiling((float)(Convert.ToInt32(txtMinSup.Text) * Program.tongSoGiaoTac / 100.0));
             dgv1.DataSource = dataTable;
             Program.conn.Close();
             Dictionary<string, List<List<int>>> t = new Dictionary<string, List<List<int>>>();
@@ -61,7 +63,10 @@ namespace KTLTHDT
 
             Program.mahoaDL.Clear();
             for (int j = 1; j < dataTable.Columns.Count; j++)
+            {
                 Program.mahoaDL.Add(dataTable.Columns[j].ColumnName.ToString());
+                //Convert.ToInt32(dataTable.Compute("SUM(" + dataTable.Columns[j].ColumnName.ToString() + ")", ""));
+            }
 
             for (int i = 0; i < dataTable.Rows.Count; i++)
             {
@@ -75,6 +80,8 @@ namespace KTLTHDT
                         List<int> tmp1 = new List<int>();
                         tmp1.Add(j);
                         tmp.Add(tmp1);
+                        Program.tapC[0][tmp1] += 1;
+
                     }
                 }
                 t[dataTable.Rows[i][0].ToString()] = tmp;
