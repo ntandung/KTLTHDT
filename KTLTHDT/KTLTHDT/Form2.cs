@@ -90,7 +90,7 @@ namespace KTLTHDT
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-
+            Program.tapF.RemoveRange(Program.tapNMuc, Program.tapF.Count - Program.tapNMuc);
             Program.tapNMuc -= 1;
             DataTable dt = new DataTable();
             dt.Columns.Add("TID");

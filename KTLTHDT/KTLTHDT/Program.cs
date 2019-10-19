@@ -29,6 +29,19 @@ namespace KTLTHDT
         // database name
         public static String database = "QLDSV";
 
+
+        public static bool CompareTwoLists(List<int> a, List<int> b)
+        {
+            if (a.Count != b.Count)
+                return false;
+            for(int i=0; i <a.Count; i++)
+            {
+                if (a[i] != b[i])
+                    return false;
+            }
+            return true;
+        }
+
         /// <summary>
         /// Su dung de hien thi cho bang F
         /// Tap cac tap n muc luu duoi dang list<list<int>> => Chuyen sang dang string
@@ -168,9 +181,9 @@ namespace KTLTHDT
         /// Kiem tra tap muc thuoc tid
         /// </summary>
         /// <param name="tid">Transaction id cua F</param>
-        /// <param name="chimuc">Tap muc cua L</param>
+        /// <param name="muc">Mot muc cua L, Example: {1,2}</param>
         /// <returns></returns>
-        public static bool ThuocTid(List<List<int>> tid, List<int> chimuc)
+        public static bool ThuocTid(List<List<int>> tid, List<int> muc)
         {
             List<string> tmp = new List<string>();
 
@@ -178,22 +191,30 @@ namespace KTLTHDT
             {
                 tmp.Add(string.Join(",", item));
             }
-            List<int> tmp_t1 = new List<int>(chimuc);
-            tmp_t1.RemoveAt(chimuc.Count - 1);
+            List<int> tmp_t1 = new List<int>(muc);
+            tmp_t1.RemoveAt(muc.Count - 1);
             
-            List<int> tmp_t2 = new List<int>(chimuc);
-            tmp_t2.RemoveAt(chimuc.Count - 2);
+            List<int> tmp_t2 = new List<int>(muc);
+            tmp_t2.RemoveAt(muc.Count - 2);
 
             string t1 = string.Join("", tmp_t1);
             string t2 = string.Join("", tmp_t2);
             int count = 0;
-            foreach(string item in tmp)
+            foreach(List<int> item in tid)
             {
-                if (item.Equals(t1))
+                if (CompareTwoLists(item, tmp_t1))
                     count += 1;
-                if (item.Equals(t2))
+                if (CompareTwoLists(item, tmp_t2))
                     count += 1;
+
             }
+            //foreach(string item in tmp)
+            //{
+            //    if (item.Equals(t1))
+            //        count += 1;
+            //    if (item.Equals(t2))
+            //        count += 1;
+            //}
             return count>=2;
         }
 
