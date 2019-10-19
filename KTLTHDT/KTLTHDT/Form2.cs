@@ -19,6 +19,9 @@ namespace KTLTHDT
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            Program.tapNMuc = 0;
+            Program.tapF.RemoveRange(1, Program.tapF.Count - 1);
+
             DataTable dt = new DataTable();
             dt.Columns.Add("TID");
             dt.Columns.Add("Tập các mục");
@@ -30,7 +33,7 @@ namespace KTLTHDT
             dgvF.DataSource = dt;
 
             DataTable dtc = new DataTable();
-            dtc.Columns.Add("Tập " + (Program.tapNMuc+=1) + " mục");
+            dtc.Columns.Add("Tập " + (Program.tapNMuc + 1) + " mục");
             dtc.Columns.Add("Support");
             foreach (var oItem in Program.tinhC(Program.tapF[0]))
             {
@@ -39,20 +42,51 @@ namespace KTLTHDT
             }
 
             dgvC.DataSource = dtc;
+            if(Program.tinhC(Program.tapF[0]).Count == 0)
+            {
+                btnNext.Text = "Finish";
+            }
 
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("TID");
-            dt.Columns.Add("Tập các mục");
-            foreach (var oItem in Program.sinhF(Program.tapF[0],Program.tinhC(Program.tapF[0])))
+            if (btnNext.Text.Equals("Finish"))
             {
-                dt.Rows.Add(new object[] { oItem.Key, Program.getTapMuc(oItem.Value) });
+                Form3 form3 = new Form3();
+                form3.ShowDialog();
             }
+            else
+            {
+                DataTable dt = new DataTable();
+                dt.Columns.Add("TID");
+                dt.Columns.Add("Tập các mục");
+                foreach (var oItem in Program.sinhF(Program.tapF[Program.tapNMuc], Program.tinhC(Program.tapF[Program.tapNMuc])))
+                {
+                    dt.Rows.Add(new object[] { oItem.Key, Program.getTapMuc(oItem.Value) });
+                }
 
-            dgvF.DataSource = dt;
+                dgvF.DataSource = dt;
+
+
+                DataTable dtc = new DataTable();
+                dtc.Columns.Add("Tập " + (Program.tapNMuc + 1) + " mục");
+                dtc.Columns.Add("Support");
+                var tapC = Program.tinhC(Program.tapF[Program.tapNMuc]);
+                foreach (var oItem in tapC)
+                {
+
+                    dtc.Rows.Add(new object[] { Program.getChiMuc(Program.strToInt(oItem.Key)), oItem.Value });
+                }
+
+                dgvC.DataSource = dtc;
+
+                if (Program.tinhC(Program.tapF[Program.tapNMuc]).Count == 0)
+                {
+                    btnNext.Text = "Finish";
+                }
+            }
+            
         }
     }
 }

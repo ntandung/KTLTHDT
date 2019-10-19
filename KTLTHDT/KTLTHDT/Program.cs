@@ -133,15 +133,12 @@ namespace KTLTHDT
 
         public static bool thuocTid(List<List<int>> tid, List<int> chimuc)
         {
-            bool rs = false;
-            string strBuilder = "";
             List<string> tmp = new List<string>();
 
             foreach(List<int> item in tid)
             {
                 tmp.Add(string.Join(",", item));
             }
-            strBuilder = string.Join(":", tmp);
             List<int> tmp_t1 = new List<int>(chimuc);
             tmp_t1.RemoveAt(chimuc.Count - 1);
             
@@ -163,6 +160,7 @@ namespace KTLTHDT
 
         public static Dictionary<string, List<List<int>>> sinhF(Dictionary<string, List<List<int>>> f_previous, Dictionary<string, float> tapL)
         {
+            Program.tapNMuc += 1;
             List<string> keys = new List<string>(tapL.Keys);
             List<List<int>> tapC = new List<List<int>>();
             foreach(string item in keys)
@@ -187,6 +185,7 @@ namespace KTLTHDT
                     tmp[f_item.Key] = tmp1;
                 }
             }
+            Program.tapF.Add(tmp);
             return tmp;
         }
         public static int KetNoi()
