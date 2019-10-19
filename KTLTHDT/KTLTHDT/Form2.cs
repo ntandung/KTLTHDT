@@ -69,7 +69,7 @@ namespace KTLTHDT
 
                 DataTable dtc = new DataTable();
                 dtc.Columns.Add("Tập " + (Program.tapNMuc + 1) + " mục");
-                dtc.Columns.Add("Support");
+                dtc.Columns.Add("Support (%)");
                 var tapL = Program.TinhL(Program.tapF[Program.tapNMuc]);
                 foreach (var oItem in tapL)
                 {
@@ -105,7 +105,7 @@ namespace KTLTHDT
 
             DataTable dtc = new DataTable();
             dtc.Columns.Add("Tập " + (Program.tapNMuc + 1) + " mục");
-            dtc.Columns.Add("Support");
+            dtc.Columns.Add("Support (%)");
             var tapL = Program.TinhL(Program.tapF[Program.tapNMuc]);
             foreach (var oItem in tapL)
             {

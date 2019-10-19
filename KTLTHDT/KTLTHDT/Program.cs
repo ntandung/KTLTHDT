@@ -14,7 +14,8 @@ namespace KTLTHDT
         public static int tapNMuc = 0;
         public static int tongSoGiaoTac = 0;
         public static int sup = 0;
-        public static List<string> mahoaDL = new List<string>();
+        // Luu danh sach item theo chi so
+        public static List<string> indexMapper = new List<string>();
         public static Dictionary<string, float> tapL = new Dictionary<string, float>();
         public static List<Dictionary<string, List<List<int>>>> tapF = new List<Dictionary<string, List<List<int>>>>();
 
@@ -59,7 +60,7 @@ namespace KTLTHDT
 
                 foreach (int index in i)
                 {
-                    tapDuLieu1.Add(Program.mahoaDL[index - 1]);
+                    tapDuLieu1.Add(Program.indexMapper[index - 1]);
                 }
                 tapDuLieu.Add("{"+ string.Join(",", tapDuLieu1.ToArray()) + "}");
             }
@@ -82,7 +83,7 @@ namespace KTLTHDT
 
             foreach (int index in idmuc)
             {
-                tapDuLieu1.Add(Program.mahoaDL[index - 1]);
+                tapDuLieu1.Add(Program.indexMapper[index - 1]);
             }
             return "{" + string.Join(",", tapDuLieu1.ToArray()) + "}";
         }
