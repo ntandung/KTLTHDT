@@ -23,7 +23,7 @@ namespace KTLTHDT
             dt.Columns.Add("Tập các mục");
             foreach (var oItem in Program.tapF[0])
             {
-                dt.Rows.Add(new object[] { oItem.Key, Program.getTapMuc(oItem.Value)});
+                dt.Rows.Add(new object[] { oItem.Key, Program.GetTapMuc(oItem.Value)});
             }
 
             dgvF.DataSource = dt;
@@ -31,15 +31,15 @@ namespace KTLTHDT
             DataTable dtc = new DataTable();
             dtc.Columns.Add("Tập " + (Program.tapNMuc + 1) + " mục");
             dtc.Columns.Add("Support");
-            foreach (var oItem in Program.tinhC(Program.tapF[0]))
+            foreach (var oItem in Program.TinhL(Program.tapF[0]))
             {
                 
-                dtc.Rows.Add(new object[] { Program.getChiMuc(Program.strToInt(oItem.Key)), oItem.Value });
+                dtc.Rows.Add(new object[] { Program.GetChiMuc(Program.StringToInt(oItem.Key)), oItem.Value });
                 Program.tapL[oItem.Key] = oItem.Value;
             }
 
             dgvC.DataSource = dtc;
-            if(Program.tinhC(Program.tapF[0]).Count == 0)
+            if(Program.TinhL(Program.tapF[0]).Count == 0)
             {
                 btnNext.Text = "FINISH";
             }
@@ -59,9 +59,9 @@ namespace KTLTHDT
                 DataTable dt = new DataTable();
                 dt.Columns.Add("TID");
                 dt.Columns.Add("Tập các mục");
-                foreach (var oItem in Program.sinhF(Program.tapF[Program.tapNMuc], Program.tinhC(Program.tapF[Program.tapNMuc])))
+                foreach (var oItem in Program.SinhF(Program.tapF[Program.tapNMuc], Program.TinhL(Program.tapF[Program.tapNMuc])))
                 {
-                    dt.Rows.Add(new object[] { oItem.Key, Program.getTapMuc(oItem.Value) });
+                    dt.Rows.Add(new object[] { oItem.Key, Program.GetTapMuc(oItem.Value) });
                 }
 
                 dgvF.DataSource = dt;
@@ -70,17 +70,17 @@ namespace KTLTHDT
                 DataTable dtc = new DataTable();
                 dtc.Columns.Add("Tập " + (Program.tapNMuc + 1) + " mục");
                 dtc.Columns.Add("Support");
-                var tapC = Program.tinhC(Program.tapF[Program.tapNMuc]);
+                var tapC = Program.TinhL(Program.tapF[Program.tapNMuc]);
                 foreach (var oItem in tapC)
                 {
 
-                    dtc.Rows.Add(new object[] { Program.getChiMuc(Program.strToInt(oItem.Key)), oItem.Value });
+                    dtc.Rows.Add(new object[] { Program.GetChiMuc(Program.StringToInt(oItem.Key)), oItem.Value });
                     Program.tapL[oItem.Key] = oItem.Value;
                 }
 
                 dgvC.DataSource = dtc;
 
-                if (Program.tinhC(Program.tapF[Program.tapNMuc]).Count == 0)
+                if (Program.TinhL(Program.tapF[Program.tapNMuc]).Count == 0)
                 {
                     btnNext.Text = "FINISH";
                 }
@@ -97,7 +97,7 @@ namespace KTLTHDT
             dt.Columns.Add("Tập các mục");
             foreach (var oItem in Program.tapF[Program.tapNMuc])
             {
-                dt.Rows.Add(new object[] { oItem.Key, Program.getTapMuc(oItem.Value) });
+                dt.Rows.Add(new object[] { oItem.Key, Program.GetTapMuc(oItem.Value) });
             }
 
             dgvF.DataSource = dt;
@@ -106,11 +106,11 @@ namespace KTLTHDT
             DataTable dtc = new DataTable();
             dtc.Columns.Add("Tập " + (Program.tapNMuc + 1) + " mục");
             dtc.Columns.Add("Support");
-            var tapC = Program.tinhC(Program.tapF[Program.tapNMuc]);
+            var tapC = Program.TinhL(Program.tapF[Program.tapNMuc]);
             foreach (var oItem in tapC)
             {
 
-                dtc.Rows.Add(new object[] { Program.getChiMuc(Program.strToInt(oItem.Key)), oItem.Value });
+                dtc.Rows.Add(new object[] { Program.GetChiMuc(Program.StringToInt(oItem.Key)), oItem.Value });
                 Program.tapL[oItem.Key] = oItem.Value;
             }
 

@@ -7,7 +7,6 @@ namespace KTLTHDT
 {
     public partial class Form1 : Form
     {
-        private DataGridView tapGiaoTacGridView = new DataGridView();
         DataTable dataTable;
 
         public Form1()
