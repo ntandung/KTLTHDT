@@ -21,6 +21,7 @@ namespace KTLTHDT
         {
             Program.tapNMuc = 0;
             Program.tapF.RemoveRange(1, Program.tapF.Count - 1);
+            Program.tapL.Clear();
 
             DataTable dt = new DataTable();
             dt.Columns.Add("TID");
@@ -39,6 +40,7 @@ namespace KTLTHDT
             {
                 
                 dtc.Rows.Add(new object[] { Program.getChiMuc(Program.strToInt(oItem.Key)), oItem.Value });
+                Program.tapL[oItem.Key] = oItem.Value;
             }
 
             dgvC.DataSource = dtc;
@@ -77,6 +79,7 @@ namespace KTLTHDT
                 {
 
                     dtc.Rows.Add(new object[] { Program.getChiMuc(Program.strToInt(oItem.Key)), oItem.Value });
+                    Program.tapL[oItem.Key] = oItem.Value;
                 }
 
                 dgvC.DataSource = dtc;

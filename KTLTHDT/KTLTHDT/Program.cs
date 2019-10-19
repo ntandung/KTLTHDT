@@ -18,7 +18,7 @@ namespace KTLTHDT
         public static int sup = 0;
         public static List<string> mahoaDL = new List<string>();
         public static List<Dictionary<List<int>, int>> tapC = new List<Dictionary<List<int>, int>>();
-        public static List<List<int>> tapMuc = new List<List<int>>();
+        public static Dictionary<string, float> tapL = new Dictionary<string, float>();
         public static List<Dictionary<string, List<List<int>>>> tapF = new List<Dictionary<string, List<List<int>>>>();
 
         // Nhap server name
