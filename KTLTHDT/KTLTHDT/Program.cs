@@ -29,6 +29,14 @@ namespace KTLTHDT
         // database name
         public static String database = "QLDSV";
 
+        /// <summary>
+        /// Su dung de hien thi cho bang F
+        /// Tap cac tap n muc luu duoi dang list<list<int>> => Chuyen sang dang string
+        /// Example: 1: CSDL, 2: CSDLPT, 3: VB
+        /// {{1,2}, {2,3}, {1,3}} -> {{CSDL, CSDLPT}, {CSDL, VB}, {CSDL, VB}}
+        /// </summary>
+        /// <param name="idmuc"></param>
+        /// <returns></returns>
         public static string GetTapMuc(List<List<int>> idmuc)
         {
             List<string> tapDuLieu = new List<string>();
@@ -46,6 +54,15 @@ namespace KTLTHDT
             return string.Join(",", tapDuLieu.ToArray());
         }
 
+        /// <summary>
+        /// Su dung de hien thi cho bang L
+        /// Moi muc trong bang L duoc luu duoi dang List<int>, Example: {1,2}
+        /// Chuyen doi List<int> -> string
+        /// Example: 1: CSDL, 2: CSDLPT
+        /// {1,2} => {CSDL, CSDPT}
+        /// </summary>
+        /// <param name="idmuc"></param>
+        /// <returns></returns>
         public static string GetChiMuc(List<int> idmuc)
         {
             List<string> tapDuLieu1 = new List<string>();
@@ -57,10 +74,16 @@ namespace KTLTHDT
             return "{" + string.Join(",", tapDuLieu1.ToArray()) + "}";
         }
 
-        public static Dictionary<string, float> TinhL(Dictionary<string, List<List<int>>> f)
+        /// <summary>
+        /// Tinh tap L tu tap F hien tai
+        /// </summary>
+        /// <param name="fCurrent"></param>
+        /// <returns></returns>
+        public static Dictionary<string, float> TinhL(Dictionary<string, List<List<int>>> fCurrent)
         {
             Dictionary<string, float> tmp = new Dictionary<string, float>();
-            foreach(var item in f) {
+            // Lap lay danh sach cac chi muc thuoc F
+            foreach(var item in fCurrent) {
                 foreach (var j in item.Value)
                 {
                     string key = GetChiMuc(j);
@@ -73,6 +96,9 @@ namespace KTLTHDT
                     }
                 }
             }
+
+            // Cac chi muc cua tap L thoa minSup
+            // Loai bo cac tap muc khong thoa minSup
             Dictionary<string, float> tmp1 = new Dictionary<string, float>(tmp);
             foreach (var i in tmp1)
             {
@@ -88,26 +114,31 @@ namespace KTLTHDT
             return tmp;
         }
 
-        public static List<List<int>> AprioriGen(List<List<int>> L_previous)
+        /// <summary>
+        /// Thuat toan apriori_gen, sinh ra tap ung vien C tu tap L(k-1)
+        /// </summary>
+        /// <param name="lPrevious">L(k-1)</param>
+        /// <returns></returns>
+        public static List<List<int>> AprioriGen(List<List<int>> lPrevious)
         {
             List<List<int>> tmp = new List<List<int>>();
-            if (L_previous.Count <= 1)
+            if (lPrevious.Count <= 1)
                 return tmp;
-            int k = L_previous[0].Count;
-            for(int i = 0; i < L_previous.Count - 1; i++)
+            int k = lPrevious[0].Count;
+            for(int i = 0; i < lPrevious.Count - 1; i++)
             {
-                List<int> tmp_i = new List<Int32>(L_previous[i]);
+                List<int> tmp_i = new List<Int32>(lPrevious[i]);
                 tmp_i.RemoveAt(k - 1);
                 int sumi = tmp_i.Count > 0 ? Convert.ToInt32(string.Join("", tmp_i)) : 0;
-                for (int j = i+1; j < L_previous.Count; j++)
+                for (int j = i+1; j < lPrevious.Count; j++)
                 {
-                    List<int> tmp_j = new List<Int32>(L_previous[j]);
+                    List<int> tmp_j = new List<Int32>(lPrevious[j]);
                     tmp_j.RemoveAt(k - 1);
                     int sumj = tmp_j.Count > 0 ?  Convert.ToInt32(string.Join("", tmp_j)) : 0;
                     if (sumi == sumj)
                     {
-                        tmp_j.Add(L_previous[i][k-1]);
-                        tmp_j.Add(L_previous[j][k-1]);
+                        tmp_j.Add(lPrevious[i][k-1]);
+                        tmp_j.Add(lPrevious[j][k-1]);
                         tmp.Add(tmp_j);
                     }
 
@@ -117,6 +148,11 @@ namespace KTLTHDT
             return tmp;
         }
 
+        /// <summary>
+        /// Chuyen chuoi string dang "1,2,3" thanh {1,2,3}
+        /// </summary>
+        /// <param name="strOfIntWithCommas">Example: "1,2,3"</param>
+        /// <returns>{1,2,3}</returns>
         public static List<int> StringToInt(string strOfIntWithCommas)
         {
             string[] items = strOfIntWithCommas.Split(',');
@@ -128,6 +164,12 @@ namespace KTLTHDT
             return tmp;
         }
 
+        /// <summary>
+        /// Kiem tra tap muc thuoc tid
+        /// </summary>
+        /// <param name="tid">Transaction id cua F</param>
+        /// <param name="chimuc">Tap muc cua L</param>
+        /// <returns></returns>
         public static bool ThuocTid(List<List<int>> tid, List<int> chimuc)
         {
             List<string> tmp = new List<string>();
@@ -155,31 +197,36 @@ namespace KTLTHDT
             return count>=2;
         }
 
-        public static Dictionary<string, List<List<int>>> SinhF(Dictionary<string, List<List<int>>> f_previous, Dictionary<string, float> tapL)
+        /// <summary>
+        /// Sinh ra tap F moi tu F(k-1) va L(k-1)
+        /// </summary>
+        /// <param name="fPrevious"></param>
+        /// <param name="lPrevious"></param>
+        /// <returns></returns>
+        public static Dictionary<string, List<List<int>>> SinhF(Dictionary<string, List<List<int>>> fPrevious, Dictionary<string, float> lPrevious)
         {
             Program.tapNMuc += 1;
-            List<string> keys = new List<string>(tapL.Keys);
-            List<List<int>> tapC = new List<List<int>>();
-            foreach(string item in keys)
+            List<List<int>> tmpLPrevious = new List<List<int>>();
+            foreach(string item in lPrevious.Keys)
             {
-                tapC.Add(StringToInt(item));
+                tmpLPrevious.Add(StringToInt(item));
             }
-            List<List<int>> rs = AprioriGen(tapC);
+            List<List<int>> tapC = AprioriGen(tmpLPrevious);
 
             Dictionary<string, List<List<int>>> tmp = new Dictionary<string, List<List<int>>>();
-            foreach(var f_item in f_previous)
+            foreach(var fItem in fPrevious)
             {
                 List<List<int>> tmp1 = new List<List<int>>();
-                foreach (List<int> item in rs)
+                foreach (List<int> item in tapC)
                 {
-                    if(ThuocTid(f_item.Value, item))
+                    if(ThuocTid(fItem.Value, item))
                     {
                         tmp1.Add(item);
                     }
                 }
                 if(tmp1.Count > 0)
                 {
-                    tmp[f_item.Key] = tmp1;
+                    tmp[fItem.Key] = tmp1;
                 }
             }
             Program.tapF.Add(tmp);

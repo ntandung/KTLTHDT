@@ -70,8 +70,8 @@ namespace KTLTHDT
                 DataTable dtc = new DataTable();
                 dtc.Columns.Add("Tập " + (Program.tapNMuc + 1) + " mục");
                 dtc.Columns.Add("Support");
-                var tapC = Program.TinhL(Program.tapF[Program.tapNMuc]);
-                foreach (var oItem in tapC)
+                var tapL = Program.TinhL(Program.tapF[Program.tapNMuc]);
+                foreach (var oItem in tapL)
                 {
 
                     dtc.Rows.Add(new object[] { Program.GetChiMuc(Program.StringToInt(oItem.Key)), oItem.Value });
@@ -80,7 +80,7 @@ namespace KTLTHDT
 
                 dgvC.DataSource = dtc;
 
-                if (Program.TinhL(Program.tapF[Program.tapNMuc]).Count == 0)
+                if (tapL.Count == 0)
                 {
                     btnNext.Text = "FINISH";
                 }
@@ -106,8 +106,8 @@ namespace KTLTHDT
             DataTable dtc = new DataTable();
             dtc.Columns.Add("Tập " + (Program.tapNMuc + 1) + " mục");
             dtc.Columns.Add("Support");
-            var tapC = Program.TinhL(Program.tapF[Program.tapNMuc]);
-            foreach (var oItem in tapC)
+            var tapL = Program.TinhL(Program.tapF[Program.tapNMuc]);
+            foreach (var oItem in tapL)
             {
 
                 dtc.Rows.Add(new object[] { Program.GetChiMuc(Program.StringToInt(oItem.Key)), oItem.Value });
@@ -116,7 +116,7 @@ namespace KTLTHDT
 
             dgvC.DataSource = dtc;
 
-            if (tapC.Count == 0)
+            if (tapL.Count == 0)
             {
                 btnNext.Text = "FINISH";
             }
