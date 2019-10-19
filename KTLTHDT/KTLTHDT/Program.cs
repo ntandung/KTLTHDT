@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Collections.Generic;
 
 
 namespace KTLTHDT
@@ -258,28 +258,6 @@ namespace KTLTHDT
         {
             Form1 form1 = new Form1();
             form1.ShowDialog();
-            //List<List<int>> tmp = new List<List<int>>();
-            //List<List<int>> rs = new List<List<int>>();
-            //List<int> tmp1 = new List<int>() { 2, 3,};
-            //List<int> tmp2 = new List<int>() { 2, 4,};
-            //List<int> tmp3 = new List<int>() { 2, 5,};
-            //List<int> tmp4 = new List<int>() { 2, 6,};
-            //List<int> tmp5 = new List<int>() { 2, 7,};
-            //List<int> tmp6 = new List<int>() { 2, 8,};
-            //List<int> tmp1 = new List<int>() { 1 };
-            //List<int> tmp2 = new List<int>() { 2};
-            //List<int> tmp3 = new List<int>() { 5, };
-            //List<int> tmp4 = new List<int>() { 6, };
-            //List<int> tmp5 = new List<int>() { 7, };
-            //List<int> tmp6 = new List<int>() { 8, };
-            //tmp.Add(tmp1);
-            //tmp.Add(tmp2);
-            //tmp.Add(tmp3);
-            //tmp.Add(tmp4);
-            //tmp.Add(tmp5);
-            //tmp.Add(tmp6);
-            //rs = apriori_gen(tmp);
-            //Console.WriteLine("hellp");
         }
     }
 }
