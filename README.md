@@ -15,7 +15,7 @@ Lưu ý:
 
 
 ## Slide và tài liệu
- > https://drive.google.com/drive/folders/1tD8H7mZoIHymCeFkzHhexUsx4uKQScZT
+ > docs folder
 
 
 ## Giao diện thuật toán Apriori-TID
