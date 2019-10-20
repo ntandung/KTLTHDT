@@ -135,9 +135,9 @@ namespace KTLTHDT
         /// <returns></returns>
         public static List<List<int>> AprioriGen(List<List<int>> lPrevious)
         {
-            List<List<int>> tmp = new List<List<int>>();
+            List<List<int>> result = new List<List<int>>();
             if (lPrevious.Count <= 1)
-                return tmp;
+                return result;
             
             int k = lPrevious[0].Count;
             
@@ -155,13 +155,13 @@ namespace KTLTHDT
                     {
                         tmp2.Add(lPrevious[i][k-1]);
                         tmp2.Add(lPrevious[j][k-1]);
-                        tmp.Add(tmp2);
+                        result.Add(tmp2);
                     }
 
                 }
 
             }
-            return tmp;
+            return result;
         }
 
         /// <summary>
