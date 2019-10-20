@@ -13,6 +13,14 @@ namespace KTLTHDT
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Goi SP_GIAOTAC tu db de lay du lieu tap D
+        /// Tong so giao tac bang tong so dong cua data lay ve
+        /// Tinh lai Program.sup
+        /// Cap nhat lai indexMapper
+        /// </summary>
+        /// <param name="minSup"></param>
+        /// <returns></returns>
         public static DataTable TimD(int minSup)
         {
             DataTable dataTable;
@@ -31,9 +39,15 @@ namespace KTLTHDT
             return dataTable;
         }
 
+
+        /// <summary>
+        /// Lap tren datatable lay tu sql server do ve, Kiem tra cac ceil co gia tri la 1 thi them vao F
+        /// </summary>
+        /// <param name="dataTable"></param>
+        /// <returns></returns>
         public static Dictionary<string, List<List<int>>> GenFFromD(DataTable dataTable)
         {
-            Dictionary<string, List<List<int>>> t = new Dictionary<string, List<List<int>>>();
+            Dictionary<string, List<List<int>>> fResults = new Dictionary<string, List<List<int>>>();
             for (int i = 0; i < dataTable.Rows.Count; i++)
             {
                 List<List<int>> tmp = new List<List<int>>();
@@ -46,9 +60,9 @@ namespace KTLTHDT
                         tmp.Add(tmp1);
                     }
                 }
-                t[dataTable.Rows[i][0].ToString()] = tmp;
+                fResults[dataTable.Rows[i][0].ToString()] = tmp;
             }
-            return t;
+            return fResults;
         }
 
         private void Form1_Load(object sender, EventArgs e)
