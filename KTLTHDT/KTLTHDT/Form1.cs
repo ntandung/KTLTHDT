@@ -7,21 +7,27 @@ namespace KTLTHDT
 {
     public partial class Form1 : Form
     {
-        DataTable dataTable;
 
         public Form1()
         {
             InitializeComponent();
         }
 
+        public static DataTable TimD(int minSup)
+        {
+            DataTable dataTable;
+            Program.KetNoi();
+            dataTable = Program.ExecSqlDataTable("EXEC SP_GIAOTAC " + minSup);
+            Program.tongSoGiaoTac = dataTable.Rows.Count;
+            Program.sup = (int)Math.Ceiling((float)(minSup * Program.tongSoGiaoTac / 100.0));
+            Program.conn.Close();
+            return dataTable;
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
-            Program.KetNoi();
-            dataTable = Program.ExecSqlDataTable("EXEC SP_GIAOTAC "+ txtMinSup.Text);
-            Program.tongSoGiaoTac = dataTable.Rows.Count;
-            Program.sup = (int)Math.Ceiling((float)(Convert.ToInt32(txtMinSup.Text) * Program.tongSoGiaoTac / 100.0));
+            DataTable dataTable = TimD(int.Parse(txtMinSup.Text));
             dgv1.DataSource = dataTable;
-            Program.conn.Close();
             Dictionary<string, List<List<int>>> t = new Dictionary<string, List<List<int>>>();
 
             for (int j = 1; j < dataTable.Columns.Count; j++)
@@ -48,11 +54,8 @@ namespace KTLTHDT
 
         private void btnTimD_Click(object sender, EventArgs e)
         {
-            Program.KetNoi();
-            dataTable = Program.ExecSqlDataTable("EXEC SP_GIAOTAC " + txtMinSup.Text);
-            Program.sup = (int)Math.Ceiling((float)(Convert.ToInt32(txtMinSup.Text) * Program.tongSoGiaoTac / 100.0));
+            DataTable dataTable = TimD(int.Parse(txtMinSup.Text));
             dgv1.DataSource = dataTable;
-            Program.conn.Close();
             Dictionary<string, List<List<int>>> t = new Dictionary<string, List<List<int>>>();
 
             Program.indexMapper.Clear();
@@ -85,5 +88,6 @@ namespace KTLTHDT
             Form2 form2 = new Form2();
             form2.ShowDialog();
         }
+
     }
 }
