@@ -95,37 +95,38 @@ namespace KTLTHDT
         /// <returns></returns>
         public static Dictionary<string, float> TinhL(Dictionary<string, List<List<int>>> fCurrent)
         {
-            Dictionary<string, float> tmp = new Dictionary<string, float>();
+            Dictionary<string, float> results = new Dictionary<string, float>();
             // Lap lay danh sach cac chi muc thuoc F
             foreach(var item in fCurrent) {
                 foreach (var j in item.Value)
                 {
                     string key = GetChiMuc(j);
                     key = string.Join(",", j);
-                    if (tmp.ContainsKey(key))
-                        tmp[key] += 1;
+                    if (results.ContainsKey(key))
+                        results[key] += 1;
                     else
                     {
-                        tmp[key] = 1;
+                        results[key] = 1;
                     }
                 }
             }
 
             // Cac chi muc cua tap L thoa minSup
             // Loai bo cac tap muc khong thoa minSup
-            Dictionary<string, float> tmp1 = new Dictionary<string, float>(tmp);
+            Dictionary<string, float> tmp1 = new Dictionary<string, float>(results);
             foreach (var i in tmp1)
             {
                 if (i.Value >= Program.sup)
                 {
-                    tmp[i.Key] = (float)(i.Value) / Program.tongSoGiaoTac * 100;
+                    results[i.Key] = (float)(i.Value) / Program.tongSoGiaoTac * 100;
+                    Program.tapL[i.Key] = results[i.Key];
                 }
                 else
                 {
-                    tmp.Remove(i.Key);
+                    results.Remove(i.Key);
                 }
             }
-            return tmp;
+            return results;
         }
 
         /// <summary>

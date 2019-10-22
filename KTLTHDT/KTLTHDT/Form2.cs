@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace KTLTHDT
 {
@@ -11,6 +12,36 @@ namespace KTLTHDT
             InitializeComponent();
         }
 
+        public static DataTable SinhBangF(Dictionary<string, List<List<int>>> fCurrent)
+        {
+            DataTable dt = new DataTable();
+
+            dt.Columns.Add("TID");
+            dt.Columns.Add("Tập các mục");
+            foreach (var item in fCurrent)
+            {
+                dt.Rows.Add(new object[] { item.Key, Program.GetTapMuc(item.Value) });
+            }
+
+            return dt;
+        }
+
+
+        public static DataTable SinhBangL(Dictionary<string, float> lCurrent)
+        {
+            DataTable dt = new DataTable();
+
+            dt.Columns.Add("Tập " + (Program.k + 1) + " mục");
+            dt.Columns.Add("Support (%)");
+            foreach (var item in lCurrent)
+            {
+                dt.Rows.Add(new object[] { Program.GetChiMuc(Program.StringToInt(item.Key)), item.Value });
+                //Program.tapL[item.Key] = item.Value;
+            }
+
+            return dt;
+        }
+
         private void Form2_Load(object sender, EventArgs e)
         {
             Program.k = 0;
@@ -18,27 +49,13 @@ namespace KTLTHDT
             Program.tapL.Clear();
             btnBack.Enabled = false;
 
-            DataTable dt = new DataTable();
-            dt.Columns.Add("TID");
-            dt.Columns.Add("Tập các mục");
-            foreach (var oItem in Program.tapF[0])
-            {
-                dt.Rows.Add(new object[] { oItem.Key, Program.GetTapMuc(oItem.Value)});
-            }
+            DataTable dt = SinhBangF(Program.tapF[0]);
 
             dgvF.DataSource = dt;
 
-            DataTable dtc = new DataTable();
-            dtc.Columns.Add("Tập " + (Program.k + 1) + " mục");
-            dtc.Columns.Add("Support (%)");
-            foreach (var oItem in Program.TinhL(Program.tapF[0]))
-            {
-                
-                dtc.Rows.Add(new object[] { Program.GetChiMuc(Program.StringToInt(oItem.Key)), oItem.Value });
-                Program.tapL[oItem.Key] = oItem.Value;
-            }
-
-            dgvC.DataSource = dtc;
+            Dictionary<string, float> tapL = Program.TinhL(Program.tapF[0]);
+            DataTable dtc = SinhBangL(tapL);
+            dgvL.DataSource = dtc;
             if(Program.TinhL(Program.tapF[0]).Count == 0)
             {
                 btnNext.Text = "FINISH";
@@ -56,33 +73,19 @@ namespace KTLTHDT
             }
             else
             {
-                DataTable dt = new DataTable();
-                dt.Columns.Add("TID");
-                dt.Columns.Add("Tập các mục");
-                foreach (var item in Program.SinhF(Program.tapF[Program.k], Program.TinhL(Program.tapF[Program.k])))
-                {
-                    dt.Rows.Add(new object[] { item.Key, Program.GetTapMuc(item.Value) });
-                }
-
+                var fNext = Program.SinhF(Program.tapF[Program.k], Program.TinhL(Program.tapF[Program.k]));
+                DataTable dt = SinhBangF(fNext);
                 dgvF.DataSource = dt;
 
-
-                DataTable dtc = new DataTable();
-                dtc.Columns.Add("Tập " + (Program.k + 1) + " mục");
-                dtc.Columns.Add("Support (%)");
                 var tapL = Program.TinhL(Program.tapF[Program.k]);
-                foreach (var item in tapL)
-                {
 
-                    dtc.Rows.Add(new object[] { Program.GetChiMuc(Program.StringToInt(item.Key)), item.Value });
-                    Program.tapL[item.Key] = item.Value;
-                }
-
-                dgvC.DataSource = dtc;
+                dgvL.DataSource = SinhBangL(tapL);
 
                 if (tapL.Count == 0)
                 {
                     btnNext.Text = "FINISH";
+                    dgvL.DataSource = SinhBangL(Program.tapL);
+                    dgvF.DataSource = null;
                 }
             }
             
@@ -92,14 +95,7 @@ namespace KTLTHDT
         {
             Program.tapF.RemoveRange(Program.k, Program.tapF.Count - Program.k);
             Program.k -= 1;
-            DataTable dt = new DataTable();
-            dt.Columns.Add("TID");
-            dt.Columns.Add("Tập các mục");
-            foreach (var item in Program.tapF[Program.k])
-            {
-                dt.Rows.Add(new object[] { item.Key, Program.GetTapMuc(item.Value) });
-            }
-
+            DataTable dt = SinhBangF(Program.tapF[Program.k]);
             dgvF.DataSource = dt;
 
 
@@ -111,10 +107,10 @@ namespace KTLTHDT
             {
 
                 dtc.Rows.Add(new object[] { Program.GetChiMuc(Program.StringToInt(item.Key)), item.Value });
-                Program.tapL[item.Key] = item.Value;
+                //Program.tapL[item.Key] = item.Value;
             }
 
-            dgvC.DataSource = dtc;
+            dgvL.DataSource = dtc;
 
             if (tapL.Count == 0)
             {

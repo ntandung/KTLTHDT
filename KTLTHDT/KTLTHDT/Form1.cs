@@ -45,22 +45,22 @@ namespace KTLTHDT
         /// </summary>
         /// <param name="dataTable"></param>
         /// <returns></returns>
-        public static Dictionary<string, List<List<int>>> GenFFromD(DataTable dataTable)
+        public static Dictionary<string, List<List<int>>> SinhTapFTuTapD(DataTable dataTable)
         {
             Dictionary<string, List<List<int>>> fResults = new Dictionary<string, List<List<int>>>();
             for (int i = 0; i < dataTable.Rows.Count; i++)
             {
-                List<List<int>> tmp = new List<List<int>>();
+                List<List<int>> tapCacMuc = new List<List<int>>();
                 for (int j = 1; j < dataTable.Columns.Count; j++)
                 {
                     if (dataTable.Rows[i][j].ToString().Equals("1"))
                     {
-                        List<int> tmp1 = new List<int>();
-                        tmp1.Add(j);
-                        tmp.Add(tmp1);
+                        List<int> muc = new List<int>();
+                        muc.Add(j);
+                        tapCacMuc.Add(muc);
                     }
                 }
-                fResults[dataTable.Rows[i][0].ToString()] = tmp;
+                fResults[dataTable.Rows[i][0].ToString()] = tapCacMuc;
             }
             return fResults;
         }
@@ -69,14 +69,14 @@ namespace KTLTHDT
         {
             DataTable dataTable = TimD(int.Parse(txtMinSup.Text));
             dgv1.DataSource = dataTable;
-            Program.tapF.Add(GenFFromD(dataTable));
+            Program.tapF.Add(SinhTapFTuTapD(dataTable));
         }
 
         private void btnTimD_Click(object sender, EventArgs e)
         {
             DataTable dataTable = TimD(int.Parse(txtMinSup.Text));
             dgv1.DataSource = dataTable;
-            Program.tapF[0] = GenFFromD(dataTable);
+            Program.tapF[0] = SinhTapFTuTapD(dataTable);
         }
 
         private void btnTimItemSets_Click(object sender, EventArgs e)

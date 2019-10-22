@@ -30,13 +30,13 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.dgvF = new System.Windows.Forms.DataGridView();
-            this.dgvC = new System.Windows.Forms.DataGridView();
+            this.dgvL = new System.Windows.Forms.DataGridView();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvF)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvL)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -56,13 +56,13 @@
             this.dgvF.Size = new System.Drawing.Size(339, 266);
             this.dgvF.TabIndex = 1;
             // 
-            // dgvC
+            // dgvL
             // 
-            this.dgvC.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvC.Location = new System.Drawing.Point(430, 80);
-            this.dgvC.Name = "dgvC";
-            this.dgvC.Size = new System.Drawing.Size(334, 266);
-            this.dgvC.TabIndex = 2;
+            this.dgvL.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvL.Location = new System.Drawing.Point(430, 80);
+            this.dgvL.Name = "dgvL";
+            this.dgvL.Size = new System.Drawing.Size(334, 266);
+            this.dgvL.TabIndex = 2;
             // 
             // btnBack
             // 
@@ -111,14 +111,14 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.dgvC);
+            this.Controls.Add(this.dgvL);
             this.Controls.Add(this.dgvF);
             this.Controls.Add(this.label1);
             this.Name = "Form2";
             this.Text = "Form2 - [ĐỀ TÀI 3] QUẢN LÍ ĐIỂM SINH VIÊN";
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvF)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvL)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,7 +128,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvF;
-        private System.Windows.Forms.DataGridView dgvC;
+        private System.Windows.Forms.DataGridView dgvL;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Label label2;
