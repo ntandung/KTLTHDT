@@ -34,7 +34,7 @@
             this.btnBack = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lbTapL = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvF)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvL)).BeginInit();
             this.SuspendLayout();
@@ -93,21 +93,21 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "TẬP F";
             // 
-            // label3
+            // lbTapL
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(427, 48);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "TẬP L";
+            this.lbTapL.AutoSize = true;
+            this.lbTapL.Location = new System.Drawing.Point(427, 48);
+            this.lbTapL.Name = "lbTapL";
+            this.lbTapL.Size = new System.Drawing.Size(37, 13);
+            this.lbTapL.TabIndex = 6;
+            this.lbTapL.Text = "TẬP L";
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lbTapL);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnBack);
@@ -132,6 +132,6 @@
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbTapL;
     }
 }

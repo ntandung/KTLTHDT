@@ -30,8 +30,7 @@ namespace KTLTHDT
         public static DataTable SinhBangL(Dictionary<string, float> lCurrent)
         {
             DataTable dt = new DataTable();
-
-            dt.Columns.Add("Tập " + (Program.k + 1) + " mục");
+            dt.Columns.Add("Tập mục");
             dt.Columns.Add("Support (%)");
             foreach (var item in lCurrent)
             {
@@ -47,6 +46,7 @@ namespace KTLTHDT
             Program.tapF.RemoveRange(1, Program.tapF.Count - 1);
             Program.tapL.Clear();
             btnBack.Enabled = false;
+            lbTapL.Text = "Tập L " + (Program.k + 1);
 
             DataTable dt = SinhBangF(Program.tapF[0]);
 
@@ -58,6 +58,7 @@ namespace KTLTHDT
             if(Program.TinhL(Program.tapF[0]).Count == 0)
             {
                 btnNext.Text = "Sinh Luật";
+                lbTapL.Text = "Tập L tổng";
             }
 
         }
@@ -68,11 +69,12 @@ namespace KTLTHDT
             if (btnNext.Text.Equals("Sinh Luật"))
             {
                 Form3 form3 = new Form3();
-                form3.ShowDialog();
+                form3.Show();
             }
             else
             {
                 var fNext = Program.SinhF(Program.tapF[Program.k], Program.TinhL(Program.tapF[Program.k]));
+                lbTapL.Text = "Tập L " + (Program.k + 1);
                 DataTable dt = SinhBangF(fNext);
                 dgvF.DataSource = dt;
 
@@ -83,6 +85,7 @@ namespace KTLTHDT
                 if (tapL.Count == 0)
                 {
                     btnNext.Text = "Sinh Luật";
+                    lbTapL.Text = "Tập L tổng";
                     dgvL.DataSource = SinhBangL(Program.tapL);
                     dgvF.DataSource = null;
                 }
@@ -95,6 +98,7 @@ namespace KTLTHDT
             Program.tapF.RemoveRange(Program.k, Program.tapF.Count - Program.k);
             Program.k -= 1;
             DataTable dt = SinhBangF(Program.tapF[Program.k]);
+            lbTapL.Text = "Tập L " + (Program.k + 1);
             dgvF.DataSource = dt;
             var tapL = Program.TinhL(Program.tapF[Program.k]);
 
@@ -103,6 +107,7 @@ namespace KTLTHDT
             if (tapL.Count == 0)
             {
                 btnNext.Text = "Sinh Luật";
+                lbTapL.Text = "Tập L tổng";
             }
             else
             {
