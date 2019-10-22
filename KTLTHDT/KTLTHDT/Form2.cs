@@ -36,7 +36,6 @@ namespace KTLTHDT
             foreach (var item in lCurrent)
             {
                 dt.Rows.Add(new object[] { Program.GetChiMuc(Program.StringToInt(item.Key)), item.Value });
-                //Program.tapL[item.Key] = item.Value;
             }
 
             return dt;
@@ -58,7 +57,7 @@ namespace KTLTHDT
             dgvL.DataSource = dtc;
             if(Program.TinhL(Program.tapF[0]).Count == 0)
             {
-                btnNext.Text = "FINISH";
+                btnNext.Text = "Sinh Luật";
             }
 
         }
@@ -66,7 +65,7 @@ namespace KTLTHDT
         private void btnNext_Click(object sender, EventArgs e)
         {
             btnBack.Enabled = true;
-            if (btnNext.Text.Equals("FINISH"))
+            if (btnNext.Text.Equals("Sinh Luật"))
             {
                 Form3 form3 = new Form3();
                 form3.ShowDialog();
@@ -83,7 +82,7 @@ namespace KTLTHDT
 
                 if (tapL.Count == 0)
                 {
-                    btnNext.Text = "FINISH";
+                    btnNext.Text = "Sinh Luật";
                     dgvL.DataSource = SinhBangL(Program.tapL);
                     dgvF.DataSource = null;
                 }
@@ -97,24 +96,13 @@ namespace KTLTHDT
             Program.k -= 1;
             DataTable dt = SinhBangF(Program.tapF[Program.k]);
             dgvF.DataSource = dt;
-
-
-            DataTable dtc = new DataTable();
-            dtc.Columns.Add("Tập " + (Program.k + 1) + " mục");
-            dtc.Columns.Add("Support (%)");
             var tapL = Program.TinhL(Program.tapF[Program.k]);
-            foreach (var item in tapL)
-            {
 
-                dtc.Rows.Add(new object[] { Program.GetChiMuc(Program.StringToInt(item.Key)), item.Value });
-                //Program.tapL[item.Key] = item.Value;
-            }
-
-            dgvL.DataSource = dtc;
+            dgvL.DataSource = SinhBangL(tapL);
 
             if (tapL.Count == 0)
             {
-                btnNext.Text = "FINISH";
+                btnNext.Text = "Sinh Luật";
             }
             else
             {
