@@ -45,7 +45,7 @@ namespace KTLTHDT
                     tmp1.Add(i);
                 }
             }
-            return results;
+            return tmp1;
         }
 
         /// <summary>
