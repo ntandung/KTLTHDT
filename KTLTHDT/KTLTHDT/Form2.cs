@@ -12,29 +12,38 @@ namespace KTLTHDT
             InitializeComponent();
         }
 
-        public static DataTable SinhBangF(Dictionary<string, List<List<int>>> fCurrent)
+        /// <summary>
+        /// Sinh bang F de hien thi len datagridview
+        /// </summary>
+        /// <param name="fCurrent"></param>
+        /// <returns></returns>
+        public static DataTable SinhBangF(List<ItemSetsCollection> fCurrent)
         {
             DataTable dt = new DataTable();
 
             dt.Columns.Add("TID");
             dt.Columns.Add("Tập các mục");
-            foreach (var item in fCurrent)
+            foreach (ItemSetsCollection item in fCurrent)
             {
-                dt.Rows.Add(new object[] { item.Key, Program.GetTapMuc(item.Value) });
+                dt.Rows.Add(new object[] {item.tid, item.GetDisplay() });
             }
 
             return dt;
         }
 
-
-        public static DataTable SinhBangL(Dictionary<string, float> lCurrent)
+        /// <summary>
+        /// Sinh bang L de hien thi len datagridview
+        /// </summary>
+        /// <param name="lCurrent"></param>
+        /// <returns></returns>
+        public static DataTable SinhBangL(ItemSetsCollection lCurrent)
         {
             DataTable dt = new DataTable();
             dt.Columns.Add("Tập mục");
             dt.Columns.Add("Support (%)");
-            foreach (var item in lCurrent)
+            foreach (Itemsets item in lCurrent)
             {
-                dt.Rows.Add(new object[] { Program.GetChiMuc(Program.StringToInt(item.Key)), item.Value });
+                dt.Rows.Add(new object[] { item.GetDisplay(), item.support });
             }
 
             return dt;
@@ -52,7 +61,7 @@ namespace KTLTHDT
 
             dgvF.DataSource = dt;
 
-            Dictionary<string, float> tapL = Program.TinhL(Program.tapF[0]);
+            ItemSetsCollection tapL = Program.TinhL(Program.tapF[0]);
             DataTable dtc = SinhBangL(tapL);
             dgvL.DataSource = dtc;
             if(Program.TinhL(Program.tapF[0]).Count == 0)
@@ -73,12 +82,12 @@ namespace KTLTHDT
             }
             else
             {
-                var fNext = Program.SinhF(Program.tapF[Program.k], Program.TinhL(Program.tapF[Program.k]));
+                List<ItemSetsCollection> fNext = Program.SinhF(Program.tapF[Program.k], Program.TinhL(Program.tapF[Program.k]));
                 lbTapL.Text = "Tập L " + (Program.k + 1);
                 DataTable dt = SinhBangF(fNext);
                 dgvF.DataSource = dt;
 
-                var tapL = Program.TinhL(Program.tapF[Program.k]);
+                ItemSetsCollection tapL = Program.TinhL(Program.tapF[Program.k]);
 
                 dgvL.DataSource = SinhBangL(tapL);
 

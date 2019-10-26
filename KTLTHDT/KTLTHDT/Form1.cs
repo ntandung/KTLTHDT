@@ -24,11 +24,13 @@ namespace KTLTHDT
         public static DataTable TimD(int minSup)
         {
             DataTable dataTable;
-            Program.KetNoi();
-            dataTable = Program.ExecSqlDataTable("EXEC SP_GIAOTAC " + minSup);
+            
+            DatabaseUtils dbUtils = new DatabaseUtils();
+            dbUtils.KetNoi();
+            dataTable = dbUtils.ExecSqlDataTable("EXEC SP_GIAOTAC " + minSup);
+
             Program.tongSoGiaoTac = dataTable.Rows.Count;
             Program.sup = (int)Math.Ceiling((float)(minSup * Program.tongSoGiaoTac / 100.0));
-            Program.conn.Close();
 
             Program.indexMapper.Clear();
             for (int j = 1; j < dataTable.Columns.Count; j++)
@@ -45,22 +47,23 @@ namespace KTLTHDT
         /// </summary>
         /// <param name="dataTable"></param>
         /// <returns></returns>
-        public static Dictionary<string, List<List<int>>> SinhTapFTuTapD(DataTable dataTable)
+        public static List<ItemSetsCollection> SinhTapFTuTapD(DataTable dataTable)
         {
-            Dictionary<string, List<List<int>>> fResults = new Dictionary<string, List<List<int>>>();
+            List<ItemSetsCollection> fResults = new List<ItemSetsCollection>();
             for (int i = 0; i < dataTable.Rows.Count; i++)
             {
-                List<List<int>> tapCacMuc = new List<List<int>>();
+                ItemSetsCollection tapCacMuc = new ItemSetsCollection();
                 for (int j = 1; j < dataTable.Columns.Count; j++)
                 {
                     if (dataTable.Rows[i][j].ToString().Equals("1"))
                     {
-                        List<int> muc = new List<int>();
+                        Itemsets muc = new Itemsets();
                         muc.Add(j);
                         tapCacMuc.Add(muc);
                     }
                 }
-                fResults[dataTable.Rows[i][0].ToString()] = tapCacMuc;
+                tapCacMuc.tid = dataTable.Rows[i][0].ToString();
+                fResults.Add(tapCacMuc);
             }
             return fResults;
         }
