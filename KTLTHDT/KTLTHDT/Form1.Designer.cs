@@ -80,7 +80,7 @@
             this.txtMinSup.Name = "txtMinSup";
             this.txtMinSup.Size = new System.Drawing.Size(58, 20);
             this.txtMinSup.TabIndex = 4;
-            this.txtMinSup.Text = "50";
+            this.txtMinSup.Text = "10";
             // 
             // label4
             // 

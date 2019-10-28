@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace KTLTHDT
 {
@@ -9,6 +10,13 @@ namespace KTLTHDT
         {
             support = 0;
         }
+
+        public Itemsets(int a)
+        {
+            this.Add(a);
+            support = 0;
+        }
+
 
         public Itemsets(Itemsets itemsets)
         {
@@ -41,7 +49,49 @@ namespace KTLTHDT
             }
             return true;
         }
+
+        public bool Contains(Itemsets itemsets)
+        {
+            return (this.Intersect(itemsets).Count() == itemsets.Count);
+        }
+
+        public string ToString()
+        {
+            return ("{" + string.Join(", ", this.ToArray()) + "}");
+        }
+
+        public ItemSetsCollection findSubSet()
+        {
+            ItemSetsCollection subSets = new ItemSetsCollection();
+            
+            for(int i = 1; i < this.Count; i++)
+            {
+                subSets.Add(new Itemsets(this[i-1]));
+                ItemSetsCollection newSubsets = new ItemSetsCollection();
+                for (int j = 0; j < subSets.Count; j++)
+                {
+                    Itemsets newSubset = new Itemsets();
+                    newSubset.AddRange(subSets[j]);
+                    newSubset.Add(this[i]);
+                    newSubsets.Add(newSubset);
+                }
+
+                subSets.AddRange(newSubsets);
+            }
+            subSets.Add(new Itemsets(this[this.Count - 1]));
+            return subSets;
+        }
+        public Itemsets Remove(Itemsets itemsets)
+        {
+            Itemsets removed = new Itemsets();
+            removed.AddRange(from item in this
+                             where !itemsets.Contains(item)
+                             select item);
+            return (removed);
+        }
     }
+
+    
 
 
     public class ItemSetsCollection: List<Itemsets>
@@ -80,6 +130,15 @@ namespace KTLTHDT
             }
 
             return string.Join(",", tapDuLieu.ToArray());
+        }
+        public string ToString()
+        {
+            string result="";
+            foreach(Itemsets itemset in this)
+            {
+                result += itemset.ToString()+",";
+            }
+            return result;
         }
     }
 

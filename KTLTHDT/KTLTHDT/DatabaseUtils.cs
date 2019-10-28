@@ -10,7 +10,7 @@ namespace KTLTHDT
         private SqlConnection conn = new SqlConnection();
 
         private String connstr;
-        private String servername = "DESKTOP-NG7E5Q6";
+        private String servername = "DESKTOP-3VEINRL\\QUANGCHIEN";
 
         // username
         private String mlogin = "sa";
