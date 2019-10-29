@@ -65,7 +65,7 @@ namespace KTLTHDT
             dt.Columns.Add("Conf (%)");
             foreach (Rule item in lCurrent)
             {
-                dt.Rows.Add(new object[] { ""+item.X.GetDisplay()+"->"+item.Y.GetDisplay(), item.confidence });
+                dt.Rows.Add(new object[] { item.GetDisplay(), item.confidence });
             }
 
             return dt;
