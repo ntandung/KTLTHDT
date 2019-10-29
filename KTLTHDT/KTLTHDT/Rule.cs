@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KTLTHDT
 {
-    class Rule
+    public class Rule
     {
         public Itemsets X;
         public Itemsets Y;
