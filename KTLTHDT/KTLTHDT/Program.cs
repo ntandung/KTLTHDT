@@ -147,11 +147,6 @@ namespace KTLTHDT
         {
             Form1 form1 = new Form1();
             form1.ShowDialog();
-            //Itemsets it = new Itemsets();
-            //it.Add(2);
-            //it.Add(3);
-            //it.Add(5);
-            //ItemSetsCollection rs = it.findSubSet();
         }
     }
 }

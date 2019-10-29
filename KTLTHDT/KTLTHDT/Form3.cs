@@ -14,7 +14,7 @@ namespace KTLTHDT
 
         private void Form3_Load(object sender, EventArgs e)
         {
-            int minConf = 80;
+            int minConf = 50;
             List<Rule> allRules = new List<Rule>();
             foreach (Itemsets itemsets in Program.tapL)
             {
@@ -57,15 +57,15 @@ namespace KTLTHDT
             return support;
         }
 
-        public static DataTable SinhBangLuat(List<Rule> lCurrent)
+        public static DataTable SinhBangLuat(List<Rule> rules)
         {
             
             DataTable dt = new DataTable();
             dt.Columns.Add("Luật");
             dt.Columns.Add("Conf (%)");
-            foreach (Rule item in lCurrent)
+            foreach (Rule rule in rules)
             {
-                dt.Rows.Add(new object[] { item.GetDisplay(), item.confidence });
+                dt.Rows.Add(new object[] { rule.GetDisplay(), rule.confidence });
             }
 
             return dt;
