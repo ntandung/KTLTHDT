@@ -131,6 +131,7 @@ namespace KTLTHDT
                     return;
                 }
             }
+            a.support = 1;
             this.Add(a);
         } 
 

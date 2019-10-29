@@ -27,7 +27,6 @@ namespace KTLTHDT
             foreach(ItemSetsCollection listItemsets in fCurrent) {
                 foreach (Itemsets itemsets in listItemsets)
                 {
-                    itemsets.support = 1;
                     results.AddItemsets(itemsets);
                 }
             }
