@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KTLTHDT
@@ -20,19 +15,23 @@ namespace KTLTHDT
         private void Form3_Load(object sender, EventArgs e)
         {
             int minConf = 50;
-            dgvRule.DataSource = SinhBangL(Program.tapL);
             List<Rule> allRules = new List<Rule>();
             foreach (Itemsets itemsets in Program.tapL)
             {
+                if (itemsets.Count == 1)
+                    continue;
                 ItemSetsCollection subsets = itemsets.findSubSet();
+                int a = 0;
                 foreach (Itemsets subset in subsets)
                 {
-                    double confidence = (FindSupport(itemsets) / FindSupport(subset)) * 100.0;
+                    if (subset.Count == itemsets.Count)
+                        continue;
+                    double confidence = (itemsets.support/ Program.tapL.GetSupp(subset)) * 100.0;
                     if (confidence >= minConf)
                     {
                         Rule rule = new Rule();
-                        rule.X.AddRange(subset);
-                        rule.Y.AddRange(itemsets.Remove(subset));
+                        rule.X = subset;
+                        rule.Y = itemsets.Remove(subset);
                         rule.support = FindSupport(itemsets);
                         rule.confidence = confidence;
                         if (rule.X.Count > 0 && rule.Y.Count > 0)
@@ -42,6 +41,8 @@ namespace KTLTHDT
                     }
                 }
             }
+            dgvRule.DataSource = SinhBangLuat(allRules);
+
         }
 
         public double FindSupport(Itemsets itemsets)
@@ -56,15 +57,15 @@ namespace KTLTHDT
             return support;
         }
 
-        public static DataTable SinhBangL(ItemSetsCollection lCurrent)
+        public static DataTable SinhBangLuat(List<Rule> rules)
         {
             
             DataTable dt = new DataTable();
-            dt.Columns.Add("Tập mục");
-            dt.Columns.Add("Support (%)");
-            foreach (Itemsets item in lCurrent)
+            dt.Columns.Add("Luật");
+            dt.Columns.Add("Conf (%)");
+            foreach (Rule rule in rules)
             {
-                dt.Rows.Add(new object[] { item.GetDisplay(), item.support });
+                dt.Rows.Add(new object[] { rule.GetDisplay(), rule.confidence });
             }
 
             return dt;

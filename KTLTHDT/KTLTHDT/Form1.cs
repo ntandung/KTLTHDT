@@ -42,6 +42,20 @@ namespace KTLTHDT
         }
 
 
+        public static DataTable SinhBangMaHoa(List<string> data)
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Mã môn học");
+            dt.Columns.Add("Mã");
+            foreach (string item in data)
+            {
+                dt.Rows.Add(new object[] { item, data.IndexOf(item) });
+            }
+
+            return dt;
+        }
+
+
         /// <summary>
         /// Lap tren datatable lay tu sql server do ve, Kiem tra cac ceil co gia tri la 1 thi them vao F
         /// </summary>
@@ -72,6 +86,8 @@ namespace KTLTHDT
         {
             DataTable dataTable = TimD(int.Parse(txtMinSup.Text));
             dgv1.DataSource = dataTable;
+            dgvMH.DataSource = SinhBangMaHoa(Program.indexMapper);
+            dgvMH.Columns[1].Width = 60;
             Program.tapF.Add(SinhTapFTuTapD(dataTable));
         }
 
@@ -79,6 +95,8 @@ namespace KTLTHDT
         {
             DataTable dataTable = TimD(int.Parse(txtMinSup.Text));
             dgv1.DataSource = dataTable;
+            dgvMH.DataSource = SinhBangMaHoa(Program.indexMapper);
+            dgvMH.Columns[1].Width = 60;
             Program.tapF[0] = SinhTapFTuTapD(dataTable);
         }
 

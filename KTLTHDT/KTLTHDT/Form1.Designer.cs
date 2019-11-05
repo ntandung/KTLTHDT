@@ -36,13 +36,16 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnTimD = new System.Windows.Forms.Button();
             this.btnTimItemSets = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dgvMH = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMH)).BeginInit();
             this.SuspendLayout();
             // 
             // dgv1
             // 
             this.dgv1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv1.Location = new System.Drawing.Point(151, 100);
+            this.dgv1.Location = new System.Drawing.Point(52, 82);
             this.dgv1.Name = "dgv1";
             this.dgv1.Size = new System.Drawing.Size(492, 249);
             this.dgv1.TabIndex = 0;
@@ -111,16 +114,35 @@
             this.btnTimItemSets.UseVisualStyleBackColor = true;
             this.btnTimItemSets.Click += new System.EventHandler(this.btnTimItemSets_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(580, 52);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(82, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "BẢNG MÃ HÓA";
+            // 
+            // dgvMH
+            // 
+            this.dgvMH.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMH.Location = new System.Drawing.Point(562, 82);
+            this.dgvMH.Name = "dgvMH";
+            this.dgvMH.Size = new System.Drawing.Size(226, 249);
+            this.dgvMH.TabIndex = 8;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dgvMH);
             this.Controls.Add(this.btnTimItemSets);
             this.Controls.Add(this.btnTimD);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtMinSup);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgv1);
@@ -128,6 +150,7 @@
             this.Text = "Form1 - [ĐỀ TÀI 3] QUẢN LÍ ĐIỂM SINH VIÊN";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMH)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -143,5 +166,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnTimD;
         private System.Windows.Forms.Button btnTimItemSets;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridView dgvMH;
     }
 }

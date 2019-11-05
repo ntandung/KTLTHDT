@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KTLTHDT
 {
-    class Rule
+    public class Rule
     {
         public Itemsets X;
         public Itemsets Y;
@@ -15,6 +11,11 @@ namespace KTLTHDT
         public override string ToString()
         {
             return (X + " => " + Y + " (support: " + Math.Round(support, 2) + "%, confidence: " + Math.Round(confidence, 2) + "%)");
+        }
+
+        public string GetDisplay()
+        {
+            return this.X.GetDisplay() + " -> " + this.Y.GetDisplay();
         }
     }
 }

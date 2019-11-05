@@ -62,24 +62,24 @@ namespace KTLTHDT
 
         public ItemSetsCollection findSubSet()
         {
-            ItemSetsCollection subSets = new ItemSetsCollection();
+            ItemSetsCollection result = new ItemSetsCollection();
             
             for(int i = 1; i < this.Count; i++)
             {
-                subSets.Add(new Itemsets(this[i-1]));
+                result.Add(new Itemsets(this[i-1]));
                 ItemSetsCollection newSubsets = new ItemSetsCollection();
-                for (int j = 0; j < subSets.Count; j++)
+                for (int j = 0; j < result.Count; j++)
                 {
                     Itemsets newSubset = new Itemsets();
-                    newSubset.AddRange(subSets[j]);
+                    newSubset.AddRange(result[j]);
                     newSubset.Add(this[i]);
                     newSubsets.Add(newSubset);
                 }
 
-                subSets.AddRange(newSubsets);
+                result.AddRange(newSubsets);
             }
-            subSets.Add(new Itemsets(this[this.Count - 1]));
-            return subSets;
+            result.Add(new Itemsets(this[this.Count - 1]));
+            return result;
         }
         public Itemsets Remove(Itemsets itemsets)
         {
@@ -108,6 +108,19 @@ namespace KTLTHDT
             }
             return false;
         }
+
+        public float GetSupp(Itemsets a)
+        {
+            foreach (Itemsets itemsets in this)
+            {
+                if (itemsets.IsEqual(a))
+                {
+                    return itemsets.support;
+                }
+            }
+            return 0;
+        }
+
         public void AddItemsets(Itemsets a)
         {
             foreach(Itemsets itemsets in this)
@@ -118,6 +131,7 @@ namespace KTLTHDT
                     return;
                 }
             }
+            a.support = 1;
             this.Add(a);
         } 
 

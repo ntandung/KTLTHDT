@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Configuration;
 
 
 namespace KTLTHDT
@@ -10,14 +11,14 @@ namespace KTLTHDT
         private SqlConnection conn = new SqlConnection();
 
         private String connstr;
-        private String servername = "DESKTOP-3VEINRL\\QUANGCHIEN";
+        private String servername = ConfigurationManager.AppSettings["servername"].ToString();
 
         // username
-        private String mlogin = "sa";
+        private String mlogin = ConfigurationManager.AppSettings["mlogin"].ToString();
         // password
-        private String password = "123";
+        private String password = ConfigurationManager.AppSettings["password"].ToString();
         // database name
-        private String database = "QLDSV";
+        private String database = ConfigurationManager.AppSettings["database"].ToString();
 
         public DatabaseUtils()
         {
