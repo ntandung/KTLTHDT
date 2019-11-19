@@ -84,9 +84,14 @@ namespace KTLTHDT
         public Itemsets Remove(Itemsets itemsets)
         {
             Itemsets removed = new Itemsets();
-            removed.AddRange(from item in this
-                             where !itemsets.Contains(item)
-                             select item);
+            foreach(int item in this)
+            {
+                if (!itemsets.Contains(item))
+                {
+                    removed.Add(item);
+                }
+            }
+            //removed.AddRange(from item in thiswhere !itemsets.Contains(item)select item);
             return (removed);
         }
     }
