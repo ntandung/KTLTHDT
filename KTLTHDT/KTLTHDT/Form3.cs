@@ -14,7 +14,14 @@ namespace KTLTHDT
 
         private void Form3_Load(object sender, EventArgs e)
         {
-            int minConf = 50;
+
+            FindRule();
+
+        }
+
+        private void FindRule()
+        {
+            int minConf = int.Parse(txtMinConf.Text);
             List<Rule> allRules = new List<Rule>();
             foreach (Itemsets itemsets in Program.tapL)
             {
@@ -26,7 +33,7 @@ namespace KTLTHDT
                 {
                     if (subset.Count == itemsets.Count)
                         continue;
-                    double confidence = (itemsets.support/ Program.tapL.GetSupp(subset)) * 100.0;
+                    double confidence = (itemsets.support / Program.tapL.GetSupp(subset)) * 100.0;
                     if (confidence >= minConf)
                     {
                         Rule rule = new Rule();
@@ -42,7 +49,6 @@ namespace KTLTHDT
                 }
             }
             dgvRule.DataSource = SinhBangLuat(allRules);
-
         }
 
         public double FindSupport(Itemsets itemsets)
@@ -69,6 +75,16 @@ namespace KTLTHDT
             }
 
             return dt;
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnFindRule_Click(object sender, EventArgs e)
+        {
+            FindRule();
         }
     }
 }
