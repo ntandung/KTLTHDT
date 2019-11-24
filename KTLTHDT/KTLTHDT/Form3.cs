@@ -40,8 +40,7 @@ namespace KTLTHDT
                         Rule rule = new Rule();
                         rule.X = subset;
                         rule.Y = itemsets.Remove(subset);
-                        rule.support = FindSupport(itemsets);
-                        rule.confidence = confidence;
+                        rule.confidence = Math.Round(confidence, 2);
                         if (rule.X.Count > 0 && rule.Y.Count > 0)
                         {
                             allRules.Add(rule);

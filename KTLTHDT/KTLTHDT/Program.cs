@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-
+﻿using System;
+using System.Collections.Generic;
 
 namespace KTLTHDT
 {
@@ -38,7 +38,7 @@ namespace KTLTHDT
             {
                 if (i.support >= Program.sup)
                 {
-                    i.support = (float)(i.support) / Program.tongSoGiaoTac * 100;
+                    i.support = (float)Math.Round(((i.support) / Program.tongSoGiaoTac * 100), 2);
                     if(!Program.tapL.IsContains(i))
                         Program.tapL.Add(i);
                     tmp1.Add(i);
@@ -121,25 +121,26 @@ namespace KTLTHDT
             Program.k += 1;
             ItemSetsCollection tapC = AprioriGen(lPrevious);
 
-            List<ItemSetsCollection> tmp = new List<ItemSetsCollection>();
+            List<ItemSetsCollection> result = new List<ItemSetsCollection>();
             foreach(ItemSetsCollection fItem in fPrevious)
             {
-                ItemSetsCollection tmp1 = new ItemSetsCollection();
+                // tid
+                ItemSetsCollection tmp = new ItemSetsCollection();
                 foreach (Itemsets item in tapC)
                 {
                     if(ThuocTid(fItem, item))
                     {
-                        tmp1.Add(item);
-                        tmp1.tid = fItem.tid;
+                        tmp.Add(item);
+                        tmp.tid = fItem.tid;
                     }
                 }
-                if(tmp1.Count > 0)
+                if(tmp.Count > 0)
                 {
-                    tmp.Add(tmp1);
+                    result.Add(tmp);
                 }
             }
-            Program.tapF.Add(tmp);
-            return tmp;
+            Program.tapF.Add(result);
+            return result;
         }
         
         static void Main(string[] args)
