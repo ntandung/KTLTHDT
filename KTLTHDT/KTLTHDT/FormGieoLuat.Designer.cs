@@ -52,6 +52,7 @@
             this.TxtMinSup.Name = "TxtMinSup";
             this.TxtMinSup.Size = new System.Drawing.Size(100, 20);
             this.TxtMinSup.TabIndex = 1;
+            this.TxtMinSup.Text = "80";
             // 
             // label2
             // 
@@ -68,6 +69,7 @@
             this.TxtNumRow.Name = "TxtNumRow";
             this.TxtNumRow.Size = new System.Drawing.Size(100, 20);
             this.TxtNumRow.TabIndex = 1;
+            this.TxtNumRow.Text = "10";
             // 
             // BtnSinhData
             // 

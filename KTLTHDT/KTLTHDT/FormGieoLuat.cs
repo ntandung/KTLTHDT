@@ -30,7 +30,22 @@ namespace KTLTHDT
 
         private void BtnSinhData_Click(object sender, EventArgs e)
         {
+            string chuoiCacMonHoc = "";
 
+            foreach (DataRowView itemChecked in CheckListBoxMonHoc.CheckedItems)
+            {
+                chuoiCacMonHoc += itemChecked["MAMH"]+",";
+            }
+            chuoiCacMonHoc = chuoiCacMonHoc.Remove(chuoiCacMonHoc.Length-1,1);
+            chuoiCacMonHoc = chuoiCacMonHoc.Replace(" ", String.Empty);
+
+            DatabaseUtils dbUtils = new DatabaseUtils();
+            dbUtils.KetNoi();
+            dbUtils.ExecSqlNonQuery("EXEC SP_GENDIEM " +TxtNumRow.Text+","+TxtMinSup.Text + ",'"+chuoiCacMonHoc+"'");
+            //dbUtils.ExecSqlNonQuery("EXEC SP_GENDIEM 10,80,'GT1,GT2'");
+
+            Form1 form1 = new Form1();
+            form1.ShowDialog();
         }
     }
 }

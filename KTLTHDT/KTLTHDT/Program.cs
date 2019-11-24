@@ -144,13 +144,11 @@ namespace KTLTHDT
         
         static void Main(string[] args)
         {
-            //FormGieoLuat gieoLuat = new FormGieoLuat();
-            //gieoLuat.ShowDialog();
-
-            Form1 form1 = new Form1();
-            form1.Show();
-
-
+            FormGieoLuat gieoLuat = new FormGieoLuat();
+            gieoLuat.ShowDialog();
+            
+            //Form1 form1 = new Form1();
+            //form1.ShowDialog();
         }
     }
 }
