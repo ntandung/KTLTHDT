@@ -16,7 +16,8 @@ namespace KTLTHDT
         {
 
             FindRule();
-
+            dgvRule.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvRule.Columns[1].Width = 60;
         }
 
         private void FindRule()

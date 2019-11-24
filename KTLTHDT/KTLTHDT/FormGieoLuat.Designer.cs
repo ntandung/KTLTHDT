@@ -111,6 +111,7 @@
             this.Controls.Add(this.TxtMinSup);
             this.Controls.Add(this.label1);
             this.Name = "FormGieoLuat";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GIEO LUẬT";
             this.Load += new System.EventHandler(this.FormGieoLuat_Load);
             this.ResumeLayout(false);

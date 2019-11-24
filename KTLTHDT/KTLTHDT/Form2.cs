@@ -70,6 +70,12 @@ namespace KTLTHDT
                 lbTapL.Text = "Tập L tổng";
             }
 
+            dgvL.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvF.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvF.Columns[0].Width = 60;
+            dgvL.Columns[1].Width = 60;
+
+
         }
 
         private void btnNext_Click(object sender, EventArgs e)

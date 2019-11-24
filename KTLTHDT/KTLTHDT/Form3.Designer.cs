@@ -42,13 +42,13 @@
             this.dgvRule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRule.Location = new System.Drawing.Point(12, 98);
             this.dgvRule.Name = "dgvRule";
-            this.dgvRule.Size = new System.Drawing.Size(776, 321);
+            this.dgvRule.Size = new System.Drawing.Size(1234, 532);
             this.dgvRule.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 82);
+            this.label1.Location = new System.Drawing.Point(12, 80);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(97, 13);
             this.label1.TabIndex = 1;
@@ -95,7 +95,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1284, 661);
             this.Controls.Add(this.btnFindRule);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtMinConf);
@@ -103,6 +103,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvRule);
             this.Name = "Form3";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form3 - [ĐỀ TÀI 3] QUẢN LÍ ĐIỂM SINH VIÊN";
             this.Load += new System.EventHandler(this.Form3_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRule)).EndInit();

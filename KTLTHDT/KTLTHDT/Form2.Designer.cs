@@ -42,7 +42,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(297, 22);
+            this.label1.Location = new System.Drawing.Point(570, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(145, 13);
             this.label1.TabIndex = 0;
@@ -53,20 +53,20 @@
             this.dgvF.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvF.Location = new System.Drawing.Point(25, 80);
             this.dgvF.Name = "dgvF";
-            this.dgvF.Size = new System.Drawing.Size(339, 266);
+            this.dgvF.Size = new System.Drawing.Size(724, 513);
             this.dgvF.TabIndex = 1;
             // 
             // dgvL
             // 
             this.dgvL.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvL.Location = new System.Drawing.Point(430, 80);
+            this.dgvL.Location = new System.Drawing.Point(799, 80);
             this.dgvL.Name = "dgvL";
-            this.dgvL.Size = new System.Drawing.Size(334, 266);
+            this.dgvL.Size = new System.Drawing.Size(453, 513);
             this.dgvL.TabIndex = 2;
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(592, 387);
+            this.btnBack.Location = new System.Drawing.Point(1069, 616);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(75, 23);
             this.btnBack.TabIndex = 3;
@@ -76,7 +76,7 @@
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(689, 387);
+            this.btnNext.Location = new System.Drawing.Point(1166, 616);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(75, 23);
             this.btnNext.TabIndex = 4;
@@ -96,7 +96,7 @@
             // lbTapL
             // 
             this.lbTapL.AutoSize = true;
-            this.lbTapL.Location = new System.Drawing.Point(427, 48);
+            this.lbTapL.Location = new System.Drawing.Point(796, 48);
             this.lbTapL.Name = "lbTapL";
             this.lbTapL.Size = new System.Drawing.Size(37, 13);
             this.lbTapL.TabIndex = 6;
@@ -106,7 +106,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1284, 661);
             this.Controls.Add(this.lbTapL);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnNext);
@@ -115,6 +115,7 @@
             this.Controls.Add(this.dgvF);
             this.Controls.Add(this.label1);
             this.Name = "Form2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2 - [ĐỀ TÀI 3] QUẢN LÍ ĐIỂM SINH VIÊN";
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvF)).EndInit();

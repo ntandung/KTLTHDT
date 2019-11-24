@@ -89,6 +89,10 @@ namespace KTLTHDT
             dgvMH.DataSource = SinhBangMaHoa(Program.indexMapper);
             dgvMH.Columns[1].Width = 60;
             Program.tapF.Add(SinhTapFTuTapD(dataTable));
+
+            dgv1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv1.Columns[0].Width = 60;
+            dgvMH.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void btnTimD_Click(object sender, EventArgs e)
@@ -97,6 +101,7 @@ namespace KTLTHDT
             dgv1.DataSource = dataTable;
             dgvMH.DataSource = SinhBangMaHoa(Program.indexMapper);
             dgvMH.Columns[1].Width = 60;
+            //dgv1.Columns[0].Width = 60;
             Program.tapF[0] = SinhTapFTuTapD(dataTable);
         }
 
