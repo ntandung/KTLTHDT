@@ -88,6 +88,8 @@ namespace KTLTHDT
             dgv1.DataSource = dataTable;
             dgvMH.DataSource = SinhBangMaHoa(Program.indexMapper);
             dgvMH.Columns[1].Width = 60;
+            
+            Program.tapF.Clear();
             Program.tapF.Add(SinhTapFTuTapD(dataTable));
 
             dgv1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
