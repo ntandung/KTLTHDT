@@ -49,7 +49,7 @@ namespace KTLTHDT
             dt.Columns.Add("Mã");
             foreach (string item in data)
             {
-                dt.Rows.Add(new object[] { item, data.IndexOf(item) });
+                dt.Rows.Add(new object[] { item, data.IndexOf(item) + 1});
             }
 
             return dt;
@@ -92,9 +92,9 @@ namespace KTLTHDT
             Program.tapF.Clear();
             Program.tapF.Add(SinhTapFTuTapD(dataTable));
 
-            dgv1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgv1.Columns[0].Width = 60;
-            dgvMH.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            //dgv1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            //dgv1.Columns[0].Width = 60;
+            //dgvMH.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void btnTimD_Click(object sender, EventArgs e)

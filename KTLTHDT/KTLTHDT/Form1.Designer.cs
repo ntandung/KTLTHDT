@@ -47,7 +47,6 @@
             this.dgv1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv1.Location = new System.Drawing.Point(52, 82);
             this.dgv1.Name = "dgv1";
-            this.dgv1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgv1.Size = new System.Drawing.Size(938, 470);
             this.dgv1.TabIndex = 0;
             // 
@@ -84,7 +83,7 @@
             this.txtMinSup.Name = "txtMinSup";
             this.txtMinSup.Size = new System.Drawing.Size(58, 20);
             this.txtMinSup.TabIndex = 4;
-            this.txtMinSup.Text = "10";
+            this.txtMinSup.Text = "80";
             // 
             // label4
             // 
